@@ -1,0 +1,29 @@
+{
+  "ApplicationName": "SanatanMandir",
+  "Url": "/SanatanMandir/SanatanMandirDashboard/Dashboard",
+  "IconImageUrl": "/Plugin/SanatanMandir/logo.png",
+  "IconClass": "",
+  "AreaName": "SanatanMandir",
+  "Roles": [
+    "SanatanMandir Admin",
+    "SanatanMandir User",
+    "SanatanMandir Pandit"
+  ],
+  "Children": [
+    {
+      "ApplicationName": "Master",
+      "Url": "",
+      "IsGroup": true,
+      "IconImageUrl": "",
+      "IconClass": "icon-event_note",
+      "AreaName": "SanatanMandir",
+      "Roles": [
+        "SanatanMandir Admin",
+        "SanatanMandir User",
+        "SanatanMandir Pandit"
+      ],
+      "Children": []
+
+    }
+  ]
+}

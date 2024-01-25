@@ -1,0 +1,14 @@
+{
+  "Group": "Sanatan",
+  "FriendlyName": "Sanatan Mandir",
+  "SystemName": "SanatanMandir",
+  "Version": 0.1,
+  "SupportedVersions": [ "0.1" ],
+  "Author": "Appman team",
+  "DisplayOrder": 1,
+  "FileName": "SanatanMandir.dll",
+  "Description": "SanatanMandir",
+  "InstallationUrl": "/SanatanMandir/SanatanMandirInstall/Install",
+  "UnInstallationUrl": "/SanatanMandir/SanatanMandirInstall/UnInstall",
+  "Dependency": []
+}
