@@ -96,26 +96,39 @@ namespace CloudVOffice.Web
             });
             IdentityModelEventSource.ShowPII = true;
 
-			// Add Hangfire services.
-			services.AddHangfire(configuration => configuration
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
                 .UseSqlServerStorage(configRoot.GetConnectionString("ConnStringMssql")));
             // Add the processing server as IHostedService
             services.AddHangfireServer();
-
-
             services.AddHttpContextAccessor();
-            services.AddMvcCore();
-            services.AddControllersWithViews().AddNewtonsoftJson(delegate (MvcNewtonsoftJsonOptions options)
+            services.AddMemoryCache();
+
+            var mvcBuilder = services.AddControllersWithViews();
+            mvcBuilder.AddRazorRuntimeCompilation();
+
+            services.AddRazorPages();
+            mvcBuilder.AddNewtonsoftJson(delegate (MvcNewtonsoftJsonOptions options)
             {
+
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
-            services.AddRazorPages();
-            services.AddMvc();
 
-            string[] subdirs = Directory.GetDirectories(CloudVOfficePluginDefaults.PathName);
+            //services.AddMvcCore();
+            //services.AddControllersWithViews().AddNewtonsoftJson(delegate (MvcNewtonsoftJsonOptions options)
+            //{
+            //    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            //});
+            //services.AddRazorPages();
+            //services.AddMvc();
+
+            var mvcCoreBuilder = services.AddMvcCore(con =>
+            {
+                con.Filters.Add<GlobalExceptionFilter>();
+            });
 
             foreach (string folder in Directory.GetDirectories(CloudVOfficePluginDefaults.PathName))
             {
@@ -123,14 +136,25 @@ namespace CloudVOffice.Web
                 string dllPath = CloudVOfficePluginDefaults.PathName + @"\" + folder.Split(@"\")[1].ToString() + @"\" + folder.Split(@"\")[1].ToString() + ".dll";
                 if (File.Exists(dllPath))
                 {
+                    string depsPathPath = CloudVOfficePluginDefaults.PathName + @"\" + folder.Split(@"\")[1].ToString() + @"\" + folder.Split(@"\")[1].ToString() + ".deps.json";
+                    if (File.Exists(depsPathPath))
+                    {
+                        File.Delete(depsPathPath);
+                    }
                     Assembly assembly2 = Assembly.LoadFrom(dllPath);
                     AssemblyPart part2 = new AssemblyPart(assembly2);
-                    services.AddControllersWithViews().PartManager.ApplicationParts.Add(part2);
+
+                    services.AddControllersWithViews(con =>
+                    {
+                        con.Filters.Add<GlobalExceptionFilter>();
+                    }).AddRazorRuntimeCompilation().PartManager.ApplicationParts.Add(part2);
+
+
                 }
             }
 
 
-
+            mvcBuilder.AddControllersAsServices();
             services.AddInfrastructure(configRoot);
 
             // services.AddScoped(IAuthenticationService, AuthenticationService);
@@ -234,3 +258,4 @@ namespace CloudVOffice.Web
 
     }
 }
+

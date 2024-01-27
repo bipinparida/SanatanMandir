@@ -8,7 +8,7 @@ using CloudVOffice.Services.Comunication;
 
 using CloudVOffice.Services.Email;
 using CloudVOffice.Services.EmailTemplates;
-
+using CloudVOffice.Services.Logging;
 using CloudVOffice.Services.Permissions;
 
 using CloudVOffice.Services.Roles;
@@ -40,6 +40,8 @@ namespace CloudVOffice.Web.Framework
 
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ILetterHeadService, LetterHeadService>();
+
+            services.AddScoped<IErrorLogService, ErrorLogService>();
            
            
 

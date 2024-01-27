@@ -1,6 +1,7 @@
 ﻿using CloudVOffice.Core.Domain.Company;
 using CloudVOffice.Core.Domain.Comunication;
 using CloudVOffice.Core.Domain.EmailTemplates;
+using CloudVOffice.Core.Domain.LocationMaster;
 using CloudVOffice.Core.Domain.Logging;
 using CloudVOffice.Core.Domain.Pemission;
 using CloudVOffice.Core.Domain.Users;
@@ -23,39 +24,34 @@ namespace CloudVOffice.Data.Persistence
         public DbSet<ActivityLogType> ActivityLogTypes { get; set; }
         public DbSet<ActivityLog> ActivityLogs { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
-
         public virtual DbSet<Role> Roles { get; set; }
-
         public virtual DbSet<User> Users { get; set; }
-
         public virtual DbSet<UserRoleMapping> UserRoleMappings { get; set; }
-
-
         public virtual DbSet<Application> Applications { get; set; }
-
         public virtual DbSet<RoleAndApplicationWisePermission> RoleAndApplicationWisePermissions { get; set; }
-
         public virtual DbSet<UserWiseViewMapper> UserWiseViewMappers { get; set; }
-
-
         public virtual DbSet<InstalledApplication> InstalledApplications { get; set; }
-
-
         public virtual DbSet<EmailDomain> EmailDomains { get; set; }
-
-
         public virtual DbSet<EmailAccount> EmailAccounts { get; set; }
         public virtual DbSet<LetterHead> LetterHeads { get; set; }
-
         public virtual DbSet<CompanyDetails> CompanyDetails { get; set; }
         public virtual DbSet<EmailTemplate> EmailTemplates { get; set; }
+
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
+
+        #endregion
+
+        #region LocationMaster
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
 
         #endregion
 
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Seed();
 
             #region Base
 
@@ -155,10 +151,6 @@ namespace CloudVOffice.Data.Persistence
              .HasDefaultValue(false)
              .ValueGeneratedNever();
 
-
-
-
-
             modelBuilder.Entity<LetterHead>()
 .Property(s => s.CreatedDate)
 .HasDefaultValueSql("getdate()");
@@ -199,13 +191,43 @@ namespace CloudVOffice.Data.Persistence
              .Property(s => s.Deleted)
              .HasDefaultValue(false)
              .ValueGeneratedNever();
-
 
 
             #endregion
 
+            #region Location Master
 
-            modelBuilder.Seed();
+            modelBuilder.Entity<Country>()
+            .Property(s => s.CreatedDate)
+            .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<Country>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+            modelBuilder.Entity<State>()
+            .Property(s => s.CreatedDate)
+            .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<State>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+            modelBuilder.Entity<City>()
+            .Property(s => s.CreatedDate)
+            .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<City>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+            #endregion
+
+
+           
         }
     }
 }
