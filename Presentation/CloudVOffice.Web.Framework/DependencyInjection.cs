@@ -1,4 +1,5 @@
-﻿using CloudVOffice.Core.Infrastructure.Http;
+﻿using CloudVOffice.Core.Domain.LocationMaster;
+using CloudVOffice.Core.Infrastructure.Http;
 using CloudVOffice.Data.Repository;
 using CloudVOffice.Services.Applications;
 
@@ -8,6 +9,7 @@ using CloudVOffice.Services.Comunication;
 
 using CloudVOffice.Services.Email;
 using CloudVOffice.Services.EmailTemplates;
+using CloudVOffice.Services.LoactionMaster;
 using CloudVOffice.Services.Logging;
 using CloudVOffice.Services.Permissions;
 
@@ -42,10 +44,12 @@ namespace CloudVOffice.Web.Framework
             services.AddScoped<ILetterHeadService, LetterHeadService>();
 
             services.AddScoped<IErrorLogService, ErrorLogService>();
-           
-           
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IStateService, StateService>();
+            services.AddScoped<ICityService, CityService>();
 
-			return services;
+
+            return services;
 
         }
     }

@@ -17,6 +17,12 @@
 		<None Remove="plugin.json" />
 		<None Remove="roles.json" />
 		<None Remove="logo.png" />
+		<None Remove="Views\LocationMaster\CityCreate.cshtml" />
+		<None Remove="Views\LocationMaster\CityView.cshtml" />
+		<None Remove="Views\LocationMaster\CountryCreate.cshtml" />
+		<None Remove="Views\LocationMaster\CountryView.cshtml" />
+		<None Remove="Views\LocationMaster\StateCreate.cshtml" />
+		<None Remove="Views\LocationMaster\StateView.cshtml" />
 		<None Remove="Views\SanatanMandirDashboard\Dashboard.cshtml" />
 	</ItemGroup>
 	
