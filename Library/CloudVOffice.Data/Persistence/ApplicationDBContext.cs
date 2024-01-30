@@ -4,6 +4,8 @@ using CloudVOffice.Core.Domain.EmailTemplates;
 using CloudVOffice.Core.Domain.LocationMaster;
 using CloudVOffice.Core.Domain.Logging;
 using CloudVOffice.Core.Domain.Pemission;
+using CloudVOffice.Core.Domain.SanatanMandir.PoojaCategories;
+using CloudVOffice.Core.Domain.SanatanMandir.Temples;
 using CloudVOffice.Core.Domain.Users;
 using CloudVOffice.Data.Seeding;
 using Microsoft.EntityFrameworkCore;
@@ -41,10 +43,16 @@ namespace CloudVOffice.Data.Persistence
 
         #endregion
 
-        #region LocationMaster
+        #region Location Master
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<City> Cities { get; set; }
+
+        #endregion
+
+        #region Sanatan Mandir
+        public virtual DbSet<PoojaCategory> PoojaCategories { get; set; }
+        public virtual DbSet<Temple> Temples { get; set; }
 
         #endregion
 
@@ -226,8 +234,30 @@ namespace CloudVOffice.Data.Persistence
 
             #endregion
 
+            #region Sanatan Mandir
 
-           
+            modelBuilder.Entity<PoojaCategory>()
+            .Property(s => s.CreatedDate)
+            .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<PoojaCategory>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+            modelBuilder.Entity<Temple>()
+            .Property(s => s.CreatedDate)
+            .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<Temple>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+
+            #endregion
+
+
         }
     }
 }
