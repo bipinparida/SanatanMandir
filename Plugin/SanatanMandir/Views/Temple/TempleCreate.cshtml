@@ -1,0 +1,170 @@
+﻿@using System.Collections;
+@using Newtonsoft.Json;
+@model CloudVOffice.Data.DTO.SanatanMandir.Temples.TempleDTO;
+
+@{
+    Layout = "_MainAppLayout";
+    ViewData["Title"] = "Temple";
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <div class="page-icon">
+                    <i class="icon-laptop_windows"></i>
+                </div>
+                <div class="page-title">
+                    <h5>SanatanMandir Dashboard</h5>
+                    <h6 class="sub-heading">Welcome to SanatanMandir Admin</h6>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right-actions">
+                    <span class="last-login"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="main-content">
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <form asp-route="SanatanMandir/Temple/TempleCreate" method="post" autocomplete="off">
+
+                    <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <b>Temple Create</b>
+                            </div>
+                            <div class="col-md-2 ">
+                                <a href="/SanatanMandir/Temple/TempleView" class="btn btn-primary btn-sm float-right"><i class="icon-list2"></i> List</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <input asp-for="@Model.TempleId" type="hidden" />
+                                <label for="CountryId" class="form-label">Country Name</label>
+                                <ejs-dropdownlist id="CountryId" allowFiltering="true" ejs-for="@Model.CountryId" filtering="onCountryNamefiltering"  change="onChangeState" dataSource="@(new SelectList((IEnumerable)ViewBag.Country, "CountryId",  "CountryName").Items)" placeholder="Select Country" popupHeight="220px">
+                                    <e-dropdownlist-fields text="CountryName" value="CountryId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="CountryId"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="StateId" class="form-label">State Name</label>
+                                <ejs-dropdownlist id="StateId" allowFiltering="true" ejs-for="@Model.StateId" change="onChangeCity" placeholder="Select State" popupHeight="220px">
+                                    <e-dropdownlist-fields text="stateName" value="stateId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="StateId"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="CityId" class="form-label">City Name</label>
+                                <ejs-dropdownlist id="CityId" allowFiltering="true" ejs-for="@Model.CityId" placeholder="Select City" popupHeight="220px">
+                                    <e-dropdownlist-fields text="cityName" value="cityId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="CityId"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="TempleName" class="form-label">Temple Name</label>
+                                <input asp-for="@Model.TempleName" type="text" class="form-control" autofocus="autofocus" placeholder="Temple Name" />
+                                <span asp-validation-for="TempleName"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="GodName" class="form-label">God Name</label>
+                                <input asp-for="@Model.GodName" type="text" class="form-control" autofocus="autofocus" placeholder="God Name" />
+                                <span asp-validation-for="GodName"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="PoojaCategoryId" class="form-label">PoojaCategory Name</label>
+                                <ejs-dropdownlist id="PoojaCategoryId" allowFiltering="true" ejs-for="@Model.PoojaCategoryId" filtering="onPoojaCategoryNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.PoojaCategorys, "PoojaCategoryId", "PoojaCategoryName").Items)" placeholder="Select District" popupHeight="220px">
+                                    <e-dropdownlist-fields text="PoojaCategoryName" value="PoojaCategoryId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="PoojaCategoryId"></span>
+                            </div>
+                        </div>
+
+                        <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function onChangeState(args) {
+        $.ajax({
+            type: "GET",
+            url: "/SanatanMandir/Temple/GetStateByCountryId",
+            data: { countryId: args.value },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                var stateDropDown = document.getElementById("StateId").ej2_instances[0];
+                stateDropDown.dataSource = result;
+                stateDropDown.dataBind();
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>
+
+<script>
+    function onChangeCity(args) {
+        $.ajax({
+            type: "GET",
+            url: "/SanatanMandir/Temple/GetCityByStateId",
+            data: { stateId: args.value },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                var cityDropDown = document.getElementById("CityId").ej2_instances[0];
+                cityDropDown.dataSource = result;
+                cityDropDown.dataBind();
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+</script>
+
+<script>
+    function onCountryNamefiltering(e) {
+        var query = new ej.data.Query();
+        query = (e.text !== '') ? query.where('CountryName', 'startswith', e.text, true) : query;
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.Country)), query);
+    }
+</script>
+<script>
+    function onPoojaCategoryNamefiltering(e) {
+        var query = new ej.data.Query();
+        query = (e.text !== '') ? query.where('PoojaCategoryName', 'startswith', e.text, true) : query;
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.PoojaCategorys)), query);
+    }
+</script>

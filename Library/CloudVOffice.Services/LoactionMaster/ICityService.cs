@@ -17,5 +17,6 @@ namespace CloudVOffice.Services.LoactionMaster
         public City GetCityByCityId(int CityId);
         public List<City> GetCityList();
         public List<City> GetCityByStateId(int StateId);
+       
     }
 }
