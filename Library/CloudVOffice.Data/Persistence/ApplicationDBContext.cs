@@ -6,6 +6,7 @@ using CloudVOffice.Core.Domain.Logging;
 using CloudVOffice.Core.Domain.Pemission;
 using CloudVOffice.Core.Domain.SanatanMandir.PoojaCategories;
 using CloudVOffice.Core.Domain.SanatanMandir.Temples;
+using CloudVOffice.Core.Domain.SanatanUsers;
 using CloudVOffice.Core.Domain.Users;
 using CloudVOffice.Data.Seeding;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,7 @@ namespace CloudVOffice.Data.Persistence
         #region Sanatan Mandir
         public virtual DbSet<PoojaCategory> PoojaCategories { get; set; }
         public virtual DbSet<Temple> Temples { get; set; }
+        public virtual DbSet<SanatanUser> SanatanUsers { get; set; }
 
         #endregion
 
@@ -254,9 +256,17 @@ namespace CloudVOffice.Data.Persistence
              .HasDefaultValue(false)
              .ValueGeneratedNever();
 
+            modelBuilder.Entity<SanatanUser>()
+           .Property(s => s.CreatedDate)
+           .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<SanatanUser>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
 
             #endregion
-
 
         }
     }
