@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace CloudVOffice.Data.DTO.Pandit
 {
@@ -18,8 +19,8 @@ namespace CloudVOffice.Data.DTO.Pandit
         public DateTime? DateOfBirth { get; set; }
         public string? Password { get; set; }
         public string? Image { get; set; }
-        public bool? IsApprove { get; set; }
-
+        public bool IsApprove { get; set; }
         public Int64 CreatedBy { get; set; }
+        public IFormFile? ImageUp { get; set; }
     }
 }
