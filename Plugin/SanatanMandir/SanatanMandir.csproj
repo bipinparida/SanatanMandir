@@ -26,6 +26,8 @@
 		<None Remove="Views\PoojaCategory\PoojaCategoryCreate.cshtml" />
 		<None Remove="Views\PoojaCategory\PoojaCategoryView.cshtml" />
 		<None Remove="Views\SanatanMandirDashboard\Dashboard.cshtml" />
+		<None Remove="Views\SanatanUser\SanatanUserCreate.cshtml" />
+		<None Remove="Views\SanatanUser\SanatanUserView.cshtml" />
 		<None Remove="Views\Temple\TempleCreate.cshtml" />
 		<None Remove="Views\Temple\TempleView.cshtml" />
 	</ItemGroup>
