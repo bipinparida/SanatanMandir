@@ -1,6 +1,8 @@
-﻿@using System.Collections;
+﻿@model CloudVOffice.Data.DTO.Pandit.PanditRegistrationDTO;
+
+@using System.Collections;
 @using Newtonsoft.Json;
-@model CloudVOffice.Data.DTO.Pandit.PanditRegistrationDTO;
+
 
 @{
     Layout = "_MainAppLayout";
@@ -33,7 +35,7 @@
     <div class="row gutters">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="card">
-                <form asp-route="SanatanMandir/PanditRegistration/PanditRegistrationCreate" method="post" autocomplete="off">
+                <form asp-route="SanatanMandir/PanditRegistration/PanditRegistrationCreate" method="post" autocomplete="off" enctype="multipart/form-data">
 
                     <div class="card-header">
 
