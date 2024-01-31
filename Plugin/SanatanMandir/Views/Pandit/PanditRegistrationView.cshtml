@@ -64,9 +64,10 @@
                             <e-grid-column field="MailId" headerText="MailId" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="Password" headerText="Password" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="Image" headerText="Image" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
+                                           textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="IsApprove" headerText="IsApprove Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column headerText="Action" template="#Actions" width="50"></e-grid-column>
+                            <e-grid-column headerText="Action" template="#Actions" width="120"></e-grid-column>
                         </e-grid-columns>
                     </ejs-grid>
 
@@ -183,6 +184,27 @@
             gridObj.csvExport();
         }
     }
+
+</script>
+
+<script id="ImageTemplate" type="text/x-template">${ imageTemplate(data)}</script>
+
+<script>
+    function dataBound(args) {
+        this.autoFitColumns();
+    }
+
+    function imageTemplate(i) {
+
+        if (i.CategoryImage != null) {
+            return ' <img src="/uploads/PanditRegistrationImage/' + i.Image + '" style="height:100px; width:100px ;padding: 5px 0px 5px 0;" />';
+        }
+        else {
+            return 'No Image';
+        }
+    }
+
+
 
 </script>
 

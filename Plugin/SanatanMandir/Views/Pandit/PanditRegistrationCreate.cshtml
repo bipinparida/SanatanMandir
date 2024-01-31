@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="TempleId" class="form-label">Temple Name</label>
-                                <ejs-dropdownlist id="TempleId" allowFiltering="true" ejs-for="@Model.TempleId" filtering="onTempleNamefiltering" dataSource="@(new SelectList((IEnumerable)ViewBag.Temples, "TempleId",  "TempleName").Items)" placeholder="Select TempleName" popupHeight="220px">
+                                <ejs-dropdownlist id="TempleId" allowFiltering="true" ejs-for="@Model.TempleId" filtering="onTempleNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.Temples, "TempleId", "TempleName").Items)" placeholder="Select TempleName" popupHeight="220px">
                                     <e-dropdownlist-fields text="TempleName" value="TempleId"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="TempleId"></span>
@@ -66,13 +66,13 @@
                                 <input asp-for="@Model.Address" type="text" class="form-control" autofocus="autofocus" placeholder="Address " />
                                 <span asp-validation-for="Address"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="PrimaryPhone" class="form-label">PrimaryPhone No </label>
                                 <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No " />
                                 <span asp-validation-for="PrimaryPhone"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="AlternatePhone" class="form-label">AlternatePhone No </label>
                                 <input asp-for="@Model.AlternatePhone" type="text" class="form-control" autofocus="autofocus" placeholder="AlternatePhone No " />
@@ -83,8 +83,6 @@
                                 <input asp-for="@Model.MailId" type="text" class="form-control" autofocus="autofocus" placeholder="MailId " />
                                 <span asp-validation-for="MailId"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="DateOfBirth" class="form-label">DateOfBirth </label>
                                 <input asp-for="@Model.DateOfBirth" type="date" class="form-control" autofocus="autofocus" placeholder="DateOfBirth " />
@@ -95,6 +93,8 @@
                                 <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " />
                                 <span asp-validation-for="Password"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="Image" class="form-label">Image</label>
                                 <input asp-for="@Model.ImageUp" type="file" class="form-control" autofocus="autofocus" placeholder="Image" />
@@ -127,6 +127,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function onTempleNamefiltering(e) {
         var query = new ej.data.Query();
