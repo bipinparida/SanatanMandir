@@ -16,6 +16,7 @@ using CloudVOffice.Services.Permissions;
 using CloudVOffice.Services.Roles;
 using CloudVOffice.Services.SanatanMandir.PoojaCategories;
 using CloudVOffice.Services.SanatanMandir.Temples;
+using CloudVOffice.Services.SanatanUsers;
 using CloudVOffice.Services.Users;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -51,6 +52,7 @@ namespace CloudVOffice.Web.Framework
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IPoojaCategoryService, PoojaCategoryService>();
             services.AddScoped<ITempleService, TempleService>();
+            services.AddScoped<ISanatanUserService, SanatanUserService>();
 
             return services;
 
