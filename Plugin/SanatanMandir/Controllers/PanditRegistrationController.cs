@@ -53,7 +53,7 @@ namespace SanatanMandir.Controllers
 
             }
 
-            return View("~/Plugins/SanatanMandir/Views/Pandit/PanditRegistrationCreate.cshtml", panditRegistrationDTO);
+            return View("~/Plugins/SanatanMandir/Views/PanditRegistration/PanditRegistrationCreate.cshtml", panditRegistrationDTO);
 
         }
 
@@ -128,7 +128,7 @@ namespace SanatanMandir.Controllers
                 }
             }
 
-            return View("~/Plugins/SanatanMandir/Views/Pandit/PanditRegistrationCreate.cshtml", panditRegistrationDTO);
+            return View("~/Plugins/SanatanMandir/Views/PanditRegistration/PanditRegistrationCreate.cshtml", panditRegistrationDTO);
 
         }
 
@@ -136,7 +136,7 @@ namespace SanatanMandir.Controllers
         {
             ViewBag.PanditRegistrations = _panditRegistrationService.GetPanditRegistrationList();
 
-            return View("~/Plugins/SanatanMandir/Views/Pandit/PanditRegistrationView.cshtml");
+            return View("~/Plugins/SanatanMandir/Views/PanditRegistration/PanditRegistrationView.cshtml");
         }
 
         [HttpGet]
