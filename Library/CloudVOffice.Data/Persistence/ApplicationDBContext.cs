@@ -3,6 +3,7 @@ using CloudVOffice.Core.Domain.Comunication;
 using CloudVOffice.Core.Domain.EmailTemplates;
 using CloudVOffice.Core.Domain.LocationMaster;
 using CloudVOffice.Core.Domain.Logging;
+using CloudVOffice.Core.Domain.Pandit;
 using CloudVOffice.Core.Domain.Pemission;
 using CloudVOffice.Core.Domain.SanatanMandir.PoojaCategories;
 using CloudVOffice.Core.Domain.SanatanMandir.Temples;
@@ -55,6 +56,7 @@ namespace CloudVOffice.Data.Persistence
         public virtual DbSet<PoojaCategory> PoojaCategories { get; set; }
         public virtual DbSet<Temple> Temples { get; set; }
         public virtual DbSet<SanatanUser> SanatanUsers { get; set; }
+        public virtual DbSet<PanditRegistration> PanditRegistrations { get; set; }
 
         #endregion
 
@@ -261,6 +263,15 @@ namespace CloudVOffice.Data.Persistence
            .HasDefaultValueSql("getdate()");
 
             modelBuilder.Entity<SanatanUser>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+            modelBuilder.Entity<PanditRegistration>()
+           .Property(s => s.CreatedDate)
+           .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<PanditRegistration>()
              .Property(s => s.Deleted)
              .HasDefaultValue(false)
              .ValueGeneratedNever();
