@@ -6,7 +6,7 @@ using CloudVOffice.Services.Applications;
 using CloudVOffice.Services.Authentication;
 using CloudVOffice.Services.Company;
 using CloudVOffice.Services.Comunication;
-
+using CloudVOffice.Services.Customer;
 using CloudVOffice.Services.Email;
 using CloudVOffice.Services.EmailTemplates;
 using CloudVOffice.Services.LoactionMaster;
@@ -55,6 +55,7 @@ namespace CloudVOffice.Web.Framework
             services.AddScoped<ITempleService, TempleService>();
             services.AddScoped<ISanatanUserService, SanatanUserService>();
             services.AddScoped<IPanditRegistrationService, PanditRegistrationService>();
+            services.AddScoped<ICustomerRegistrationService, CustomerRegistrationService>();
 
             return services;
 

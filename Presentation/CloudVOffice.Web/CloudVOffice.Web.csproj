@@ -17,6 +17,7 @@
 		<Folder Include="Areas\Application\Data\" />
 		<Folder Include="Areas\Application\Models\" />
 		<Folder Include="Plugins\" />
+		<Folder Include="wwwroot\uploads\CustomerRegistrationImage\" />
 		<Folder Include="wwwroot\uploads\PanditRegistrationImage\" />
 		<Folder Include="wwwroot\uploads\setup\" />
 
