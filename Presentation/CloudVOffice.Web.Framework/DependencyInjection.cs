@@ -11,6 +11,7 @@ using CloudVOffice.Services.Email;
 using CloudVOffice.Services.EmailTemplates;
 using CloudVOffice.Services.LoactionMaster;
 using CloudVOffice.Services.Logging;
+using CloudVOffice.Services.Pandit;
 using CloudVOffice.Services.Permissions;
 
 using CloudVOffice.Services.Roles;
@@ -53,6 +54,7 @@ namespace CloudVOffice.Web.Framework
             services.AddScoped<IPoojaCategoryService, PoojaCategoryService>();
             services.AddScoped<ITempleService, TempleService>();
             services.AddScoped<ISanatanUserService, SanatanUserService>();
+            services.AddScoped<IPanditRegistrationService, PanditRegistrationService>();
 
             return services;
 

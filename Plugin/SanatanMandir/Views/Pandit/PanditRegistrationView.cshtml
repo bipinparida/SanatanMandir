@@ -1,7 +1,7 @@
 ﻿@using CloudVOffice.Core.Domain.Common;
 @{
     Layout = "_MainAppLayout";
-    ViewData["Title"] = "Temple";
+    ViewData["Title"] = "PanditRegistration";
 }
 @addTagHelper *, Syncfusion.EJ2
 <header class="main-heading">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="page-title">
                     <h5>SanatanMandir</h5>
-                    <h6 class="sub-heading">Welcome to POS Admin</h6>
+                    <h6 class="sub-heading">Welcome to SanatanMandir Admin</h6>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
@@ -33,16 +33,16 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-10">
-                            Temple View
+                            PanditRegistration View
                         </div>
                         <div class="col-md-2 ">
-                            <a href="/SanatanMandir/Temple/TempleCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add TempleName</a>
+                            <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add PanditRegistration</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
 
-                    <ejs-grid id="GridOverview" dataSource="ViewBag.Temples"
+                    <ejs-grid id="GridOverview" dataSource="ViewBag.PanditRegistrations"
                               allowFiltering="true" allowSorting="true"
                               allowExcelExport="true" allowGrouping="true"
                               allowMultiSorting="true"
@@ -56,13 +56,18 @@
 
                         <e-grid-selectionsettings persistSelection="true" type="Multiple" checkboxOnly="true"></e-grid-selectionsettings>
                         <e-grid-columns>
-                            <e-grid-column field="TempleName" headerText="Temple Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="GodName" headerText="God Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="CountryId" headerText="Country Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="StateId" headerText="State Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="CityId" headerText="City Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="PoojaCategoryId" headerText="PoojaCategory Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column headerText="Action" template="#Actions" width="50"></e-grid-column>
+                            <e-grid-column field="TempleId" headerText="Temple Name" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="PanditName" headerText="Pandit Name" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Address" headerText="Address Name" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="AlternatePhone" headerText="AlternatePhone No" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="MailId" headerText="MailId" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Password" headerText="Password" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
+                                           textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="IsApprove" headerText="IsApprove Name" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column headerText="Action" template="#Actions" width="120"></e-grid-column>
                         </e-grid-columns>
                     </ejs-grid>
 
@@ -83,7 +88,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "Temple",
+                    title: "PanditRegistration",
                     text: "Successfully created.",
                     type: "success"
                 });
@@ -92,7 +97,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "Temple",
+                    title: "PanditRegistration",
                     text: "Successfully updated.",
                     type: "success"
                 });
@@ -101,7 +106,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "Temple",
+                    title: "PanditRegistration",
                     text: "Successfully Deleted.",
                     type: "success"
                 });
@@ -110,7 +115,7 @@
                 sweetAlert({
                     html: true,
                     icon: "danger",
-                    title: "Temple",
+                    title: "PanditRegistration",
                     text: "There is somthing going wrong.",
                     type: "danger"
                 });
@@ -119,7 +124,7 @@
                 sweetAlert({
                     html: true,
                     icon: "error",
-                    title: "Temple",
+                    title: "PanditRegistration",
                     text: "There is somthing going wrong.",
                     type: "error"
                 });
@@ -128,7 +133,7 @@
                 sweetAlert({
                     html: true,
                     icon: "error",
-                    title: "Temple",
+                    title: "PanditRegistration",
                     text: message,
                     type: "error"
                 });
@@ -151,15 +156,15 @@
             dangerMode: true,
         }).then(function (isConfirm) {
             if (isConfirm) {
-                window.location.href = "/SanatanMandir/Temple/DeleteTemple?TempleId=" + Id;
+                window.location.href = "/SanatanMandir/PanditRegistration/DeletePanditRegistration?PanditRegistrationId=" + Id;
             }
         })
     }
 </script>
 <script id="Actions" type="text/x-template">
     <div class="link">
-        <a href="/SanatanMandir/Temple/TempleCreate?TempleId=${TempleId}"><i class="icon-pencil3" style="font-size:22px"></i></a> &nbsp;&nbsp;&nbsp;
-        <button onClick="Delete(${TempleId})" style="background: transparent;border: none;"><i class="icon-trash" style="font-size:22px"></i></button>
+        <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate?PanditRegistrationId=${PanditRegistrationId}"><i class="icon-pencil3" style="font-size:22px"></i></a> &nbsp;&nbsp;&nbsp;
+        <button onClick="Delete(${PanditRegistrationId})" style="background: transparent;border: none;"><i class="icon-trash" style="font-size:22px"></i></button>
 
     </div>
 </script>
@@ -179,6 +184,27 @@
             gridObj.csvExport();
         }
     }
+
+</script>
+
+<script id="ImageTemplate" type="text/x-template">${ imageTemplate(data)}</script>
+
+<script>
+    function dataBound(args) {
+        this.autoFitColumns();
+    }
+
+    function imageTemplate(i) {
+
+        if (i.CategoryImage != null) {
+            return ' <img src="/uploads/PanditRegistrationImage/' + i.Image + '" style="height:100px; width:100px ;padding: 5px 0px 5px 0;" />';
+        }
+        else {
+            return 'No Image';
+        }
+    }
+
+
 
 </script>
 

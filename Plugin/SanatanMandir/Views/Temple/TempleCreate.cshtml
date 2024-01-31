@@ -86,7 +86,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="PoojaCategoryId" class="form-label">PoojaCategory Name</label>
-                                <ejs-dropdownlist id="PoojaCategoryId" allowFiltering="true" ejs-for="@Model.PoojaCategoryId" filtering="onPoojaCategoryNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.PoojaCategorys, "PoojaCategoryId", "PoojaCategoryName").Items)" placeholder="Select District" popupHeight="220px">
+                                <ejs-dropdownlist id="PoojaCategoryId" allowFiltering="true" ejs-for="@Model.PoojaCategoryId" filtering="onPoojaCategoryNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.PoojaCategorys, "PoojaCategoryId", "PoojaCategoryName").Items)" placeholder="Select PoojaCategory" popupHeight="220px">
                                     <e-dropdownlist-fields text="PoojaCategoryName" value="PoojaCategoryId"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="PoojaCategoryId"></span>
