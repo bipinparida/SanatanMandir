@@ -31,6 +31,15 @@ namespace CloudVOffice.Services.Pandit
                 {
                     PanditRegistration panditRegistration = new PanditRegistration();
                     panditRegistration.PanditName = panditRegistrationDTO.PanditName;
+                    panditRegistration.CountryId= panditRegistrationDTO.CountryId;
+                    panditRegistration.StateId= panditRegistrationDTO.StateId;
+                    panditRegistration.CityId= panditRegistrationDTO.CityId;
+                    panditRegistration.Religion= panditRegistrationDTO.Religion;
+                    panditRegistration.MotherTongue= panditRegistrationDTO.MotherTongue;
+                    panditRegistration.Caste= panditRegistrationDTO.Caste;
+                    panditRegistration.Gothram= panditRegistrationDTO.Gothram;
+                    panditRegistration.AadharCard= panditRegistrationDTO.AadharCard;
+                    panditRegistration.Qualification= panditRegistrationDTO.Qualification;
                     panditRegistration.TempleId = panditRegistrationDTO.TempleId;
                     panditRegistration.Address = panditRegistrationDTO.Address;
                     panditRegistration.PrimaryPhone = panditRegistrationDTO.PrimaryPhone;
@@ -69,6 +78,15 @@ namespace CloudVOffice.Services.Pandit
                     if (a != null)
                     {
                         a.PanditName = panditRegistrationDTO.PanditName;
+                        a.CountryId= panditRegistrationDTO.CountryId;
+                        a.StateId=panditRegistrationDTO.StateId;
+                        a.CityId= panditRegistrationDTO.CityId;
+                        a.Religion= panditRegistrationDTO.Religion;
+                        a.MotherTongue = panditRegistrationDTO.MotherTongue;
+                        a.Caste= panditRegistrationDTO.Caste;
+                        a.Gothram= panditRegistrationDTO.Gothram;
+                        a.AadharCard= panditRegistrationDTO.AadharCard;
+                        a.Qualification= panditRegistrationDTO.Qualification;
                         a.TempleId = panditRegistrationDTO.TempleId;
                         a.Address = panditRegistrationDTO.Address;
                         a.PrimaryPhone = panditRegistrationDTO.PrimaryPhone;

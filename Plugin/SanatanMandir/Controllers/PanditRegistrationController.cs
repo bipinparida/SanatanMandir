@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CloudVOffice.Services.SanatanMandir.Temples;
+using CloudVOffice.Services.LoactionMaster;
 
 namespace SanatanMandir.Controllers
 {
@@ -23,11 +24,23 @@ namespace SanatanMandir.Controllers
         private readonly IPanditRegistrationService _panditRegistrationService;
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly ITempleService _templeService;
-        public PanditRegistrationController(IPanditRegistrationService panditRegistrationService, IWebHostEnvironment hostingEnvironment,ITempleService templeService)
+        private readonly IStateService _stateService;
+        private readonly ICountryService _countryService;
+        private readonly ICityService _cityService;
+        public PanditRegistrationController(IPanditRegistrationService panditRegistrationService,
+                                            IWebHostEnvironment hostingEnvironment,
+                                            ITempleService templeService,
+                                            ICountryService countryService,
+                                            IStateService stateService,
+                                            ICityService cityService)
         {
             _panditRegistrationService = panditRegistrationService;
             _hostingEnvironment = hostingEnvironment;
             _templeService= templeService;
+            _countryService = countryService;
+            _stateService = stateService;
+            _cityService = cityService;
+            
         }
 
         [HttpGet]
@@ -35,12 +48,24 @@ namespace SanatanMandir.Controllers
         {
             PanditRegistrationDTO panditRegistrationDTO = new PanditRegistrationDTO();
             ViewBag.Temples = _templeService.GetTempleList();
+            ViewBag.Country = _countryService.GetCountryList();
+            ViewBag.States = _stateService.GetStateList();
+            ViewBag.City = _cityService.GetCityList();
             if (PanditRegistrationId != null)
             {
 
                 PanditRegistration d = _panditRegistrationService.GetPanditRegistrationById(int.Parse(PanditRegistrationId.ToString()));
 
                 panditRegistrationDTO.PanditName = d.PanditName;
+                panditRegistrationDTO.CountryId= d.CountryId;
+                panditRegistrationDTO.StateId=d.StateId;
+                panditRegistrationDTO.CityId= d.CityId;
+                panditRegistrationDTO.Religion=d.Religion;
+                panditRegistrationDTO.MotherTongue=d.MotherTongue;
+                panditRegistrationDTO.Caste=d.Caste;
+                panditRegistrationDTO.Gothram=d.Gothram;
+                panditRegistrationDTO.AadharCard=d.AadharCard;
+                panditRegistrationDTO.Qualification=d.Qualification;
                 panditRegistrationDTO.TempleId = d.TempleId;
                 panditRegistrationDTO.Address = d.Address;
                 panditRegistrationDTO.PrimaryPhone = d.PrimaryPhone;
@@ -146,6 +171,14 @@ namespace SanatanMandir.Controllers
 
             var a = _panditRegistrationService.DeletePanditRegistration(PanditRegistrationId, DeletedBy);
             return Redirect("/SanatanMandir/PanditRegistration/PanditRegistrationView");
+        }
+        public JsonResult GetStateByCountryId(int CountryId)
+        {
+            return Json(_stateService.GetStateByCountryId(CountryId));
+        }
+        public JsonResult GetCityByStateId(int StateId)
+        {
+            return Json(_cityService.GetCityByStateId(StateId));
         }
     }
 }

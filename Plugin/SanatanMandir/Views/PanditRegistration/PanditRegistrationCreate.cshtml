@@ -52,9 +52,59 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <input asp-for="@Model.PanditRegistrationId" type="hidden" />
-                                <label for="PanditName" class="form-label">Pandit Name</label>
-                                <input asp-for="@Model.PanditName" type="text" class="form-control" autofocus="autofocus" placeholder="Pandit Name" />
-                                <span asp-validation-for="PanditName"></span>
+                                <label for="CountryId" class="form-label">Country Name</label>
+                                <ejs-dropdownlist id="CountryId" allowFiltering="true" ejs-for="@Model.CountryId" filtering="onCountryNamefiltering" change="onChangeState" dataSource="@(new SelectList((IEnumerable)ViewBag.Country, "CountryId",  "CountryName").Items)" placeholder="Select Country" popupHeight="220px">
+                                    <e-dropdownlist-fields text="CountryName" value="CountryId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="CountryId"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="StateId" class="form-label">State Name</label>
+                                <ejs-dropdownlist id="StateId" allowFiltering="true" ejs-for="@Model.StateId" change="onChangeCity" placeholder="Select State" popupHeight="220px">
+                                    <e-dropdownlist-fields text="stateName" value="stateId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="StateId"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="CityId" class="form-label">City Name</label>
+                                <ejs-dropdownlist id="CityId" allowFiltering="true" ejs-for="@Model.CityId" placeholder="Select City" popupHeight="220px">
+                                    <e-dropdownlist-fields text="cityName" value="cityId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="CityId"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="Religion" class="form-label">Religion Name </label>
+                                <input asp-for="@Model.Religion" type="text" class="form-control" autofocus="autofocus" placeholder="Religion " />
+                                <span asp-validation-for="Religion"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="MotherTongue" class="form-label">MotherTongue Name </label>
+                                <input asp-for="@Model.MotherTongue" type="text" class="form-control" autofocus="autofocus" placeholder="MotherTongue " />
+                                <span asp-validation-for="MotherTongue"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="Caste" class="form-label">Caste Name </label>
+                                <input asp-for="@Model.Caste" type="text" class="form-control" autofocus="autofocus" placeholder="Caste " />
+                                <span asp-validation-for="Caste"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="Gothram" class="form-label">Gothram Name </label>
+                                <input asp-for="@Model.Gothram" type="text" class="form-control" autofocus="autofocus" placeholder="Gothram " />
+                                <span asp-validation-for="Gothram"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="AadharCard" class="form-label">AadharCard Number </label>
+                                <input asp-for="@Model.AadharCard" type="text" class="form-control" autofocus="autofocus" placeholder="AadharCard No " />
+                                <span asp-validation-for="AadharCard"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="Qualification" class="form-label">Qualification</label>
+                                <input asp-for="@Model.Qualification" type="text" class="form-control" autofocus="autofocus" placeholder="Qualification"/>
+                                <span asp-validation-for="Qualification"></span>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="TempleId" class="form-label">Temple Name</label>
@@ -64,17 +114,22 @@
                                 <span asp-validation-for="TempleId"></span>
                             </div>
                             <div class="form-group col-md-3">
+                                <label for="PanditName" class="form-label">Pandit Name</label>
+                                <input asp-for="@Model.PanditName" type="text" class="form-control" autofocus="autofocus" placeholder="Pandit Name" />
+                                <span asp-validation-for="PanditName"></span>
+                            </div>
+                            <div class="form-group col-md-3">
                                 <label for="Address" class="form-label">Address </label>
                                 <input asp-for="@Model.Address" type="text" class="form-control" autofocus="autofocus" placeholder="Address " />
                                 <span asp-validation-for="Address"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="PrimaryPhone" class="form-label">PrimaryPhone No </label>
                                 <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No " />
                                 <span asp-validation-for="PrimaryPhone"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="AlternatePhone" class="form-label">AlternatePhone No </label>
                                 <input asp-for="@Model.AlternatePhone" type="text" class="form-control" autofocus="autofocus" placeholder="AlternatePhone No " />
@@ -90,13 +145,13 @@
                                 <input asp-for="@Model.DateOfBirth" type="date" class="form-control" autofocus="autofocus" placeholder="DateOfBirth " />
                                 <span asp-validation-for="DateOfBirth"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="Password" class="form-label">Password </label>
                                 <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " />
                                 <span asp-validation-for="Password"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="Image" class="form-label">Image</label>
                                 <input asp-for="@Model.ImageUp" type="file" class="form-control" autofocus="autofocus" placeholder="Image" />
@@ -130,6 +185,53 @@
     </div>
 </div>
 
+
+<script>
+
+    function onChangeState(args) {
+        $.ajax({
+            type: "GET",
+            url: "/SanatanMandir/PanditRegistration/GetStateByCountryId",
+            data: { countryId: args.value },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                var stateDropDown = document.getElementById("StateId").ej2_instances[0];
+                stateDropDown.dataSource = result;
+                stateDropDown.dataBind();
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>
+
+<script>
+    function onChangeCity(args) {
+        $.ajax({
+            type: "GET",
+            url: "/SanatanMandir/PanditRegistration/GetCityByStateId",
+            data: { stateId: args.value },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                var cityDropDown = document.getElementById("CityId").ej2_instances[0];
+                cityDropDown.dataSource = result;
+                cityDropDown.dataBind();
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+</script>
+
 <script>
     function onTempleNamefiltering(e) {
         var query = new ej.data.Query();
@@ -137,3 +239,13 @@
         e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.Temples)), query);
     }
 </script>
+
+<script>
+    function onCountryNamefiltering(e) {
+        var query = new ej.data.Query();
+        query = (e.text !== '') ? query.where('CountryName', 'startswith', e.text, true) : query;
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.Country)), query);
+    }
+</script>
+
+
