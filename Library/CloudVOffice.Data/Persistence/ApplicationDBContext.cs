@@ -59,6 +59,7 @@ namespace CloudVOffice.Data.Persistence
         public virtual DbSet<SanatanUser> SanatanUsers { get; set; }
         public virtual DbSet<PanditRegistration> PanditRegistrations { get; set; }
         public virtual DbSet<CustomerRegistration> CustomerRegistrations { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
 
         #endregion
 
@@ -283,6 +284,15 @@ namespace CloudVOffice.Data.Persistence
          .HasDefaultValueSql("getdate()");
 
             modelBuilder.Entity<CustomerRegistration>()
+             .Property(s => s.Deleted)
+             .HasDefaultValue(false)
+             .ValueGeneratedNever();
+
+            modelBuilder.Entity<Question>()
+       .Property(s => s.CreatedDate)
+       .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<Question>()
              .Property(s => s.Deleted)
              .HasDefaultValue(false)
              .ValueGeneratedNever();
