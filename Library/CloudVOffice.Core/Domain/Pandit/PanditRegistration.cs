@@ -9,6 +9,15 @@ namespace CloudVOffice.Core.Domain.Pandit
     public class PanditRegistration : IAuditEntity, ISoftDeletedEntity
     {
         public Int64 PanditRegistrationId { get; set; }
+        public int CountryId { get; set; }
+        public int StateId { get; set; }
+        public int CityId { get; set; }
+        public string? Religion { get; set; }
+        public string? MotherTongue { get; set; }
+        public string? Caste { get; set; }
+        public string? Gothram { get; set; }
+        public string? AadharCard { get; set; }
+        public string? Qualification { get; set; }
         public Int64 TempleId { get; set; }
         public string? PanditName { get; set; }
         public string? Address { get; set; }
