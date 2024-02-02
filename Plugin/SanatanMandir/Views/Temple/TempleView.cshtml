@@ -61,8 +61,11 @@
                             <e-grid-column field="CountryId" headerText="Country Name" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="StateId" headerText="State Name" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="CityId" headerText="City Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="PoojaCategoryId" headerText="PoojaCategory Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column headerText="Action" template="#Actions" width="50"></e-grid-column>
+                            <e-grid-column field="Latitude" headerText="Latitude" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Longitude" headerText="Longitude" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
+                                           textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column headerText="Action" template="#Actions" width="120"></e-grid-column>
                         </e-grid-columns>
                     </ejs-grid>
 
@@ -166,6 +169,10 @@
 <script id="statusTemplate" type="text/x-template">
     ${statusDetail(data)}
 </script>
+
+<script id="ImageTemplate" type="text/x-template">${ imageTemplate(data)}</script>
+
+
 <script>
     function toolbarClick(args) {
         var gridObj = document.getElementById("GridOverview").ej2_instances[0];
@@ -181,4 +188,25 @@
     }
 
 </script>
+
+<script>
+    function dataBound(args) {
+        this.autoFitColumns();
+    }
+
+    function imageTemplate(i) {
+
+        if (i.Image != null) {
+            return ' <img src="/uploads/TempleImage/' + i.Image + '" style="height:100px; width:100px ;padding: 5px 0px 5px 0;" />';
+        }
+        else {
+            return 'No Image';
+        }
+    }
+
+
+
+</script>
+
+
 

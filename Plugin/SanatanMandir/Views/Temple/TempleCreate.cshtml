@@ -33,7 +33,7 @@
     <div class="row gutters">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="card">
-                <form asp-route="SanatanMandir/Temple/TempleCreate" method="post" autocomplete="off">
+                <form asp-route="SanatanMandir/Temple/TempleCreate" method="post" autocomplete="off" enctype="multipart/form-data">
 
                     <div class="card-header">
 
@@ -48,6 +48,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-row">
+
                             <div class="form-group col-md-3">
                                 <input asp-for="@Model.TempleId" type="hidden" />
                                 <label for="CountryId" class="form-label">Country Name</label>
@@ -72,25 +73,51 @@
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="CityId"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="TempleName" class="form-label">Temple Name</label>
                                 <input asp-for="@Model.TempleName" type="text" class="form-control" autofocus="autofocus" placeholder="Temple Name" />
                                 <span asp-validation-for="TempleName"></span>
                             </div>
+
+                        </div>
+                        <div class="form-row">
+                           
                             <div class="form-group col-md-3">
                                 <label for="GodName" class="form-label">God Name</label>
                                 <input asp-for="@Model.GodName" type="text" class="form-control" autofocus="autofocus" placeholder="God Name" />
                                 <span asp-validation-for="GodName"></span>
                             </div>
                             <div class="form-group col-md-3">
+                                <label for="Latitude" class="form-label">Latitude</label>
+                                <input asp-for="@Model.Latitude" type="text" class="form-control" autofocus="autofocus" placeholder="Latitude" />
+                                <span asp-validation-for="Latitude"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="Longitude" class="form-label">Longitude</label>
+                                <input asp-for="@Model.Longitude" type="text" class="form-control" autofocus="autofocus" placeholder="Longitude" />
+                                <span asp-validation-for="Longitude"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="Image" class="form-label">Temple Image</label>
+                                <input asp-for="@Model.ImageUp" type="file" class="form-control" autofocus="autofocus" placeholder="Image" />
+                                <span asp-validation-for="Image"></span>
+                                @{
+                                    if (Model.Image != null)
+                                    {
+                                        <img src="/uploads/setup/@Model.Image" style="height:100px; width:100px" />
+                                        <input type="hidden" asp-for="@Model.Image">
+                                    }
+                                }
+                            </div>
+
+                          @*   <div class="form-group col-md-3">
                                 <label for="PoojaCategoryId" class="form-label">PoojaCategory Name</label>
                                 <ejs-dropdownlist id="PoojaCategoryId" allowFiltering="true" ejs-for="@Model.PoojaCategoryId" filtering="onPoojaCategoryNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.PoojaCategorys, "PoojaCategoryId", "PoojaCategoryName").Items)" placeholder="Select PoojaCategory" popupHeight="220px">
                                     <e-dropdownlist-fields text="PoojaCategoryName" value="PoojaCategoryId"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="PoojaCategoryId"></span>
-                            </div>
+                            </div> *@
                         </div>
 
                         <div asp-validation-summary="ModelOnly" class="message-error"></div>

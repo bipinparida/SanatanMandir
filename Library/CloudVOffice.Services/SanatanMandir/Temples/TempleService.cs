@@ -37,7 +37,10 @@ namespace CloudVOffice.Services.SanatanMandir.Temples
                     temple.CountryId= templeDTO.CountryId;
                     temple.StateId=templeDTO.StateId;
                     temple.CityId = templeDTO.CityId;
-                    temple.PoojaCategoryId = templeDTO.PoojaCategoryId;
+                    temple.Latitude = templeDTO.Latitude;
+                    temple.Longitude = templeDTO.Longitude;
+                    temple.Image = templeDTO.Image;
+                  //  temple.PoojaCategoryId = templeDTO.PoojaCategoryId;
                     temple.CreatedBy = templeDTO.CreatedBy;
                     temple.CreatedDate = System.DateTime.Now;
                     var obj = _templeRepo.Insert(temple);
@@ -71,7 +74,10 @@ namespace CloudVOffice.Services.SanatanMandir.Temples
                         a.CountryId = templeDTO.CountryId;
                         a.StateId = templeDTO.StateId;
                         a.CityId=templeDTO.CityId;
-                        a.PoojaCategoryId=templeDTO.PoojaCategoryId;
+                        a.Latitude =templeDTO.Longitude;
+                        a.Longitude=templeDTO.CityId;
+                        a.Image=templeDTO.Image;
+                      //a.PoojaCategoryId=templeDTO.PoojaCategoryId;
                         a.UpdatedBy = templeDTO.CreatedBy;
                         a.UpdatedDate = DateTime.Now;
                         _dbContext.SaveChanges();
@@ -92,6 +98,24 @@ namespace CloudVOffice.Services.SanatanMandir.Temples
             }
         }
 
+      
+
+        public Temple GetTempleById(int TempleId)
+        {
+            return _dbContext.Temples.Where(x => x.TempleId == TempleId && x.Deleted == false).SingleOrDefault();
+        }
+
+        public List<Temple> GetTempleList()
+        {
+            try
+            {
+                return _dbContext.Temples.Where(x => x.Deleted == false).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public MessageEnum DeleteTemple(int TempleId, Int64 DeletedBy)
         {
             try
@@ -114,23 +138,5 @@ namespace CloudVOffice.Services.SanatanMandir.Temples
             }
         }
 
-        public Temple GetTempleById(int TempleId)
-        {
-            return _dbContext.Temples.Where(x => x.TempleId == TempleId && x.Deleted == false).SingleOrDefault();
-        }
-
-        public List<Temple> GetTempleList()
-        {
-            try
-            {
-                return _dbContext.Temples.Where(x => x.Deleted == false).ToList();
-
-            }
-            catch
-            {
-                throw;
-            }
-        }
-        
     }
 }
