@@ -26,7 +26,7 @@ namespace CloudVOffice.Services.Pandit
 
             try
             {
-                var objcheck = _dbContext.PanditRegistrations.SingleOrDefault(opt => opt.Deleted == false && opt.PanditName == panditRegistrationDTO.PanditName);
+                var objcheck = _dbContext.PanditRegistrations.SingleOrDefault(opt => opt.Deleted == false && opt.PrimaryPhone == panditRegistrationDTO.PrimaryPhone);
                 if (objcheck == null)
                 {
                     PanditRegistration panditRegistration = new PanditRegistration();
@@ -34,6 +34,8 @@ namespace CloudVOffice.Services.Pandit
                     panditRegistration.CountryId= panditRegistrationDTO.CountryId;
                     panditRegistration.StateId= panditRegistrationDTO.StateId;
                     panditRegistration.CityId= panditRegistrationDTO.CityId;
+                    panditRegistration.Experiences = panditRegistrationDTO.Experiences;
+                    panditRegistration.ExpertiseOnPuja = panditRegistrationDTO.ExpertiseOnPuja;
                     panditRegistration.Religion= panditRegistrationDTO.Religion;
                     panditRegistration.MotherTongue= panditRegistrationDTO.MotherTongue;
                     panditRegistration.Caste= panditRegistrationDTO.Caste;
@@ -71,7 +73,7 @@ namespace CloudVOffice.Services.Pandit
         {
             try
             {
-                var updatePanditRegistration = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId != panditRegistrationDTO.PanditRegistrationId && x.PanditName == panditRegistrationDTO.PanditName && x.Deleted == false).FirstOrDefault();
+                var updatePanditRegistration = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId != panditRegistrationDTO.PanditRegistrationId && x.PrimaryPhone == panditRegistrationDTO.PrimaryPhone && x.Deleted == false).FirstOrDefault();
                 if (updatePanditRegistration == null)
                 {
                     var a = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == panditRegistrationDTO.PanditRegistrationId).FirstOrDefault();
@@ -81,6 +83,8 @@ namespace CloudVOffice.Services.Pandit
                         a.CountryId= panditRegistrationDTO.CountryId;
                         a.StateId=panditRegistrationDTO.StateId;
                         a.CityId= panditRegistrationDTO.CityId;
+                        a.Experiences = panditRegistrationDTO.Experiences;
+                        a.ExpertiseOnPuja = panditRegistrationDTO.ExpertiseOnPuja;
                         a.Religion= panditRegistrationDTO.Religion;
                         a.MotherTongue = panditRegistrationDTO.MotherTongue;
                         a.Caste= panditRegistrationDTO.Caste;
