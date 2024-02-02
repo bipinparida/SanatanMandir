@@ -17,6 +17,8 @@
 		<None Remove="plugin.json" />
 		<None Remove="roles.json" />
 		<None Remove="logo.png" />
+		<None Remove="Views\Answer\AnswerCreate.cshtml" />
+		<None Remove="Views\Answer\AnswerView.cshtml" />
 		<None Remove="Views\CustomerRegistration\CustomerRegistrationCreate.cshtml" />
 		<None Remove="Views\CustomerRegistration\CustomerRegistrationView.cshtml" />
 		<None Remove="Views\LocationMaster\CityCreate.cshtml" />

@@ -57,6 +57,7 @@ namespace CloudVOffice.Web.Framework
             services.AddScoped<IPanditRegistrationService, PanditRegistrationService>();
             services.AddScoped<ICustomerRegistrationService, CustomerRegistrationService>();
             services.AddScoped<IQuestionService, QuestionService>();
+            services.AddScoped<IAnswerService, AnswerService>();
 
             return services;
 
