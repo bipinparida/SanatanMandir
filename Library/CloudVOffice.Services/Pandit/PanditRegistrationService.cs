@@ -26,8 +26,8 @@ namespace CloudVOffice.Services.Pandit
 
             try
             {
-                var objcheck = _dbContext.PanditRegistrations.SingleOrDefault(opt => opt.Deleted == false && opt.PrimaryPhone == panditRegistrationDTO.PrimaryPhone);
-                if (objcheck == null)
+                var pandit = _dbContext.PanditRegistrations.Where(x => x.PrimaryPhone == panditRegistrationDTO.PrimaryPhone && x.Deleted == false).FirstOrDefault();
+                if (pandit == null)
                 {
                     PanditRegistration panditRegistration = new PanditRegistration();
                     panditRegistration.PanditName = panditRegistrationDTO.PanditName;
@@ -73,8 +73,8 @@ namespace CloudVOffice.Services.Pandit
         {
             try
             {
-                var updatePanditRegistration = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId != panditRegistrationDTO.PanditRegistrationId && x.PrimaryPhone == panditRegistrationDTO.PrimaryPhone && x.Deleted == false).FirstOrDefault();
-                if (updatePanditRegistration == null)
+                var updatePandit = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId != panditRegistrationDTO.PanditRegistrationId && x.PrimaryPhone == panditRegistrationDTO.PrimaryPhone && x.Deleted == false).FirstOrDefault();
+                if (updatePandit == null)
                 {
                     var a = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == panditRegistrationDTO.PanditRegistrationId).FirstOrDefault();
                     if (a != null)

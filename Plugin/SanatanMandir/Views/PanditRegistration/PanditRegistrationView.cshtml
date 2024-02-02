@@ -18,7 +18,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="right-actions">
-                    <span class="last-login">Last Login: 2 hours ago</span>
+                  @*<span class="last-login">Last Login: 2 hours ago</span> *@
                 </div>
             </div>
         </div>
@@ -33,10 +33,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-10">
-                            PanditRegistration View
+                            Pandit View
                         </div>
                         <div class="col-md-2 ">
-                            <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add PanditRegistration</a>
+                            <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add Pandit</a>
                         </div>
                     </div>
                 </div>
@@ -73,11 +73,11 @@
                             <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="AlternatePhone" headerText="AlternatePhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="MailId" headerText="MailId" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120" format="dd-MM-yyyy"></e-grid-column>
                             <e-grid-column field="Password" headerText="Password" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
                                            textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="IsApprove" headerText="IsApprove Name" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="IsApprove" headerText="IsApprove Name" template="#statusTemplate" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column headerText="Action" template="#Actions" width="120"></e-grid-column>
                         </e-grid-columns>
                     </ejs-grid>
@@ -99,7 +99,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "PanditRegistration",
+                    title: "Pandit",
                     text: "Successfully created.",
                     type: "success"
                 });
@@ -108,7 +108,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "PanditRegistration",
+                    title: "Pandit",
                     text: "Successfully updated.",
                     type: "success"
                 });
@@ -117,7 +117,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "PanditRegistration",
+                    title: "Pandit",
                     text: "Successfully Deleted.",
                     type: "success"
                 });
@@ -126,7 +126,7 @@
                 sweetAlert({
                     html: true,
                     icon: "danger",
-                    title: "PanditRegistration",
+                    title: "Pandit",
                     text: "There is somthing going wrong.",
                     type: "danger"
                 });
@@ -135,7 +135,7 @@
                 sweetAlert({
                     html: true,
                     icon: "error",
-                    title: "PanditRegistration",
+                    title: "Pandit",
                     text: "There is somthing going wrong.",
                     type: "error"
                 });
@@ -144,7 +144,7 @@
                 sweetAlert({
                     html: true,
                     icon: "error",
-                    title: "PanditRegistration",
+                    title: "Pandit",
                     text: message,
                     type: "error"
                 });
@@ -179,9 +179,11 @@
 
     </div>
 </script>
+
 <script id="statusTemplate" type="text/x-template">
     ${statusDetail(data)}
 </script>
+
 <script>
     function toolbarClick(args) {
         var gridObj = document.getElementById("GridOverview").ej2_instances[0];
@@ -214,7 +216,15 @@
             return 'No Image';
         }
     }
+    function statusDetail(e) {
 
+        if (e.IsApprove == true) {
+            return '<span class="badge badge-pill badge-success" > Approved </span>';
+        } else {
+            return '<span class="badge badge-pill badge-dark"> Not Approved </span>';
+        }
+
+    }
 
 
 </script>

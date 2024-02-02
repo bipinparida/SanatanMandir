@@ -46,11 +46,13 @@ namespace SanatanMandir.Controllers
         [HttpGet]
         public IActionResult PanditRegistrationCreate(int? PanditRegistrationId)
         {
-            PanditRegistrationDTO panditRegistrationDTO = new PanditRegistrationDTO();
             ViewBag.Temples = _templeService.GetTempleList();
-            ViewBag.Country = _countryService.GetCountryList();
+            ViewBag.CountryList = _countryService.GetCountryList();
             ViewBag.States = _stateService.GetStateList();
             ViewBag.City = _cityService.GetCityList();
+
+            PanditRegistrationDTO panditRegistrationDTO = new PanditRegistrationDTO();
+          
             if (PanditRegistrationId != null)
             {
 
@@ -122,7 +124,7 @@ namespace SanatanMandir.Controllers
                     {
 
                         TempData["msg"] = MessageEnum.Duplicate;
-                        ModelState.AddModelError("", "PanditRegistration Already Exists");
+                        ModelState.AddModelError("", "Pandit Mobile Number Already Exists");
 
                     }
                     else
@@ -145,7 +147,7 @@ namespace SanatanMandir.Controllers
                     else if (a == MessageEnum.Duplicate)
                     {
                         TempData["msg"] = MessageEnum.Duplicate;
-                        ModelState.AddModelError("", "PanditRegistration Already Exists");
+                        ModelState.AddModelError("", "Pandit Mobile Number Already Exists");
                     }
                     else
                     {
@@ -154,6 +156,11 @@ namespace SanatanMandir.Controllers
                     }
                 }
             }
+
+            ViewBag.Temples = _templeService.GetTempleList();
+            ViewBag.CountryList = _countryService.GetCountryList();
+            ViewBag.States = _stateService.GetStateList();
+            ViewBag.City = _cityService.GetCityList();
 
             return View("~/Plugins/SanatanMandir/Views/PanditRegistration/PanditRegistrationCreate.cshtml", panditRegistrationDTO);
 
