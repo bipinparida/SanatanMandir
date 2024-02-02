@@ -12,6 +12,8 @@ namespace CloudVOffice.Core.Domain.Pandit
         public int CountryId { get; set; }
         public int StateId { get; set; }
         public int CityId { get; set; }
+        public string? Experiences { get; set; }
+        public string? ExpertiseOnPuja { get; set; }
         public string? Religion { get; set; }
         public string? MotherTongue { get; set; }
         public string? Caste { get; set; }
