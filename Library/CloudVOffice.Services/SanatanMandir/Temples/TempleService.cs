@@ -75,7 +75,7 @@ namespace CloudVOffice.Services.SanatanMandir.Temples
                         a.StateId = templeDTO.StateId;
                         a.CityId=templeDTO.CityId;
                         a.Latitude =templeDTO.Longitude;
-                        a.Longitude=templeDTO.CityId;
+                        a.Longitude=templeDTO.Longitude;
                         a.Image=templeDTO.Image;
                       //a.PoojaCategoryId=templeDTO.PoojaCategoryId;
                         a.UpdatedBy = templeDTO.CreatedBy;
