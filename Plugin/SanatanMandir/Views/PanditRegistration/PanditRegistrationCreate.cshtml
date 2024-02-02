@@ -73,12 +73,22 @@
                                 <span asp-validation-for="CityId"></span>
                             </div>
                             <div class="form-group col-md-3">
+                                <label for="Experiences" class="form-label">Experiences </label>
+                                <input asp-for="@Model.Experiences" type="text" class="form-control" autofocus="autofocus" placeholder="Experiences " />
+                                <span asp-validation-for="Experiences"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="ExpertiseOnPuja" class="form-label">ExpertiseOnPuja </label>
+                                <input asp-for="@Model.ExpertiseOnPuja" type="text" class="form-control" autofocus="autofocus" placeholder="ExpertiseOnPuja " />
+                                <span asp-validation-for="ExpertiseOnPuja"></span>
+                            </div>
+                            <div class="form-group col-md-3">
                                 <label for="Religion" class="form-label">Religion Name </label>
                                 <input asp-for="@Model.Religion" type="text" class="form-control" autofocus="autofocus" placeholder="Religion " />
                                 <span asp-validation-for="Religion"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="MotherTongue" class="form-label">MotherTongue Name </label>
                                 <input asp-for="@Model.MotherTongue" type="text" class="form-control" autofocus="autofocus" placeholder="MotherTongue " />
@@ -89,6 +99,8 @@
                                 <input asp-for="@Model.Caste" type="text" class="form-control" autofocus="autofocus" placeholder="Caste " />
                                 <span asp-validation-for="Caste"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="Gothram" class="form-label">Gothram Name </label>
                                 <input asp-for="@Model.Gothram" type="text" class="form-control" autofocus="autofocus" placeholder="Gothram " />
@@ -99,11 +111,9 @@
                                 <input asp-for="@Model.AadharCard" type="text" class="form-control" autofocus="autofocus" placeholder="AadharCard No " />
                                 <span asp-validation-for="AadharCard"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="Qualification" class="form-label">Qualification</label>
-                                <input asp-for="@Model.Qualification" type="text" class="form-control" autofocus="autofocus" placeholder="Qualification"/>
+                                <input asp-for="@Model.Qualification" type="text" class="form-control" autofocus="autofocus" placeholder="Qualification" />
                                 <span asp-validation-for="Qualification"></span>
                             </div>
                             <div class="form-group col-md-3">
@@ -113,6 +123,8 @@
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="TempleId"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="PanditName" class="form-label">Pandit Name</label>
                                 <input asp-for="@Model.PanditName" type="text" class="form-control" autofocus="autofocus" placeholder="Pandit Name" />
@@ -123,8 +135,6 @@
                                 <input asp-for="@Model.Address" type="text" class="form-control" autofocus="autofocus" placeholder="Address " />
                                 <span asp-validation-for="Address"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="PrimaryPhone" class="form-label">PrimaryPhone No </label>
                                 <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No " />
@@ -135,6 +145,8 @@
                                 <input asp-for="@Model.AlternatePhone" type="text" class="form-control" autofocus="autofocus" placeholder="AlternatePhone No " />
                                 <span asp-validation-for="AlternatePhone"></span>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="MailId" class="form-label">MailId </label>
                                 <input asp-for="@Model.MailId" type="text" class="form-control" autofocus="autofocus" placeholder="MailId " />
@@ -145,8 +157,6 @@
                                 <input asp-for="@Model.DateOfBirth" type="date" class="form-control" autofocus="autofocus" placeholder="DateOfBirth " />
                                 <span asp-validation-for="DateOfBirth"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="Password" class="form-label">Password </label>
                                 <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " />
@@ -164,6 +174,8 @@
                                     }
                                 }
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="IsApprove" class="form-label">Is Approve </label>
                                 <br>

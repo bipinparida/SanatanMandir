@@ -60,6 +60,8 @@ namespace SanatanMandir.Controllers
                 panditRegistrationDTO.CountryId= d.CountryId;
                 panditRegistrationDTO.StateId=d.StateId;
                 panditRegistrationDTO.CityId= d.CityId;
+                panditRegistrationDTO.Experiences = d.Experiences;
+                panditRegistrationDTO.ExpertiseOnPuja = d.ExpertiseOnPuja;
                 panditRegistrationDTO.Religion=d.Religion;
                 panditRegistrationDTO.MotherTongue=d.MotherTongue;
                 panditRegistrationDTO.Caste=d.Caste;
