@@ -10,6 +10,7 @@ namespace CloudVOffice.Core.Domain.Pandit
     {
         public Int64 AnswerId { get; set; }
         public Int64 QuestionId { get; set; }
+        public Int64 PanditRegistrationId { get; set; }
         public string Answers { get; set; }
 
         public Int64 CreatedBy { get; set; }
