@@ -1,4 +1,5 @@
-﻿using CloudVOffice.Core.Domain.Common;
+﻿using Azure.Security.KeyVault.Keys;
+using CloudVOffice.Core.Domain.Common;
 using CloudVOffice.Core.Domain.Pandit;
 using CloudVOffice.Data.DTO.Pandit;
 using CloudVOffice.Data.DTO.SanatanUsers;
@@ -50,7 +51,8 @@ namespace CloudVOffice.Services.Pandit
                     panditRegistration.DateOfBirth = panditRegistrationDTO.DateOfBirth;
                     panditRegistration.Password = panditRegistrationDTO.Password;
                     panditRegistration.Image = panditRegistrationDTO.Image;
-                    panditRegistration.IsApprove = panditRegistrationDTO.IsApprove;
+                   // panditRegistration.IsApprove = panditRegistrationDTO.IsApprove;
+                    panditRegistration.IsApprove = false;
                     panditRegistration.CreatedBy = panditRegistrationDTO.CreatedBy;
                     panditRegistration.CreatedDate = System.DateTime.Now;
                     var obj = _panditRegistrationRepo.Insert(panditRegistration);
@@ -120,6 +122,26 @@ namespace CloudVOffice.Services.Pandit
             }
         }
 
+
+        public PanditRegistration GetPanditRegistrationById(int PanditRegistrationId)
+        {
+            return _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == PanditRegistrationId && x.Deleted == false).SingleOrDefault();
+        }
+
+        public List<PanditRegistration> GetPanditRegistrationList()
+        {
+            try
+            {
+                return _dbContext.PanditRegistrations.Where(x => x.Deleted == false).ToList();
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
         public MessageEnum DeletePanditRegistration(int PanditRegistrationId, Int64 DeletedBy)
         {
             try
@@ -142,17 +164,38 @@ namespace CloudVOffice.Services.Pandit
             }
         }
 
-        public PanditRegistration GetPanditRegistrationById(int PanditRegistrationId)
-        {
-            return _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == PanditRegistrationId && x.Deleted == false).SingleOrDefault();
-        }
-
-        public List<PanditRegistration> GetPanditRegistrationList()
+        public MessageEnum ApprovePanditRegistration(int PanditRegistrationId)
         {
             try
             {
-                return _dbContext.PanditRegistrations.Where(x => x.Deleted == false).ToList();
-
+                var a = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == PanditRegistrationId).FirstOrDefault();
+                if (a != null)
+                {
+                    a.IsApprove = true;
+                    _dbContext.SaveChanges();
+                    return MessageEnum.Approved;
+                }
+                else
+                    return MessageEnum.Invalid;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public MessageEnum RejectPanditRegistration(int PanditRegistrationId)
+        {
+            try
+            {
+                var a = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == PanditRegistrationId).FirstOrDefault();
+                if (a != null)
+                {
+                    a.IsApprove = false;
+                    _dbContext.SaveChanges();
+                    return MessageEnum.Rejected;
+                }
+                else
+                    return MessageEnum.Invalid;
             }
             catch
             {

@@ -18,7 +18,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="right-actions">
-                  @*<span class="last-login">Last Login: 2 hours ago</span> *@
+                    @*<span class="last-login">Last Login: 2 hours ago</span> *@
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-10">
-                            Pandit View
+                            <b>Pandit View</b>
                         </div>
                         <div class="col-md-2 ">
                             <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add Pandit</a>
@@ -56,6 +56,11 @@
 
                         <e-grid-selectionsettings persistSelection="true" type="Multiple" checkboxOnly="true"></e-grid-selectionsettings>
                         <e-grid-columns>
+
+                            <e-grid-column headerText="Action" template="#Actions" width="180"></e-grid-column>
+                            <e-grid-column field="IsApprove" headerText="IsApprove Name" template="#statusTemplate" textAlign="Left" width="150"></e-grid-column>
+                            <e-grid-column field="PanditName" headerText="Pandit Name" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="CountryId" headerText="Country Name" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="StateId" headerText="State Name" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="CityId" headerText="City Name" textAlign="Left" width="120"></e-grid-column>
@@ -68,17 +73,16 @@
                             <e-grid-column field="AadharCard" headerText="AadharCard Number" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="Qualification" headerText="Qualification " textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="TempleId" headerText="Temple Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="PanditName" headerText="Pandit Name" textAlign="Left" width="120"></e-grid-column>
+
                             <e-grid-column field="Address" headerText="Address Name" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
+
                             <e-grid-column field="AlternatePhone" headerText="AlternatePhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="MailId" headerText="MailId" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120" format="dd-MM-yyyy"></e-grid-column>
                             <e-grid-column field="Password" headerText="Password" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
                                            textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="IsApprove" headerText="IsApprove Name" template="#statusTemplate" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column headerText="Action" template="#Actions" width="120"></e-grid-column>
+
                         </e-grid-columns>
                     </ejs-grid>
 
@@ -172,11 +176,59 @@
         })
     }
 </script>
+
+
+<script type="text/javascript">
+    function Approve(Id) {
+        swal({
+            title: "Are you sure?",
+            text: "You approve this pandit!",
+            icon: "warning",
+            buttons: [
+                'No, cancel it!',
+                'Yes, I am sure!'
+            ],
+            confirmButtonColor: "#DD6B55",
+            dangerMode: false,
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                window.location.href = "/SanatanMandir/PanditRegistration/ApprovePanditRegistration?PanditRegistrationId=" + Id;
+            }
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    function Reject(Id) {
+        swal({
+            title: "Are you sure?",
+            text: "You reject this pandit!",
+            icon: "warning",
+            buttons: [
+                'No, cancel it!',
+                'Yes, I am sure!'
+            ],
+            confirmButtonColor: "#DD6B55",
+            dangerMode: false,
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                window.location.href = "/SanatanMandir/PanditRegistration/RejectPanditRegistration?PanditRegistrationId=" + Id;
+            }
+        })
+    }
+</script>
+
+
 <script id="Actions" type="text/x-template">
     <div class="link">
-        <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate?PanditRegistrationId=${PanditRegistrationId}"><i class="icon-pencil3" style="font-size:22px"></i></a> &nbsp;&nbsp;&nbsp;
-        <button onClick="Delete(${PanditRegistrationId})" style="background: transparent;border: none;"><i class="icon-trash" style="font-size:22px"></i></button>
 
+        <button onClick="Approve(${PanditRegistrationId})" style="background: transparent;border: none; color:green" title="Approve"><i class="icon-checkmark" style="font-size:22px"></i> </button>
+
+         <button onClick="Reject(${PanditRegistrationId})" style="background: transparent;border: none; color:red" title="Reject" ><i class="icon-cross" style="font-size:22px"></i> </button>
+
+        <button onClick="Delete(${PanditRegistrationId})" style="background: transparent;border: none;"><i class="icon-bin" style="font-size:22px"></i></button>
+
+         <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate?PanditRegistrationId=${PanditRegistrationId}"><i class="icon-pencil3" style="font-size:22px"></i></a> &nbsp;&nbsp;&nbsp;
     </div>
 </script>
 

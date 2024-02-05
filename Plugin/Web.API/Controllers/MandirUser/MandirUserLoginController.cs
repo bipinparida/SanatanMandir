@@ -37,13 +37,20 @@ namespace Web.API.Controllers.MandirUser
 
             else if (pandit != null)
             {
-                if (pandit.Password == Password)
+                if (pandit.IsApprove == true)
                 {
-                    return Ok(new { pandit = pandit });
+                    if (pandit.Password == Password)
+                    {
+                        return Ok(new { pandit = pandit });
+                    }
+                    else
+                    {
+                        return BadRequest("Mobile Number is correct but the Password is wrong");
+                    }
                 }
                 else
                 {
-                    return BadRequest("Mobile Number is correct but the Password is wrong");
+                    return BadRequest("Pandit is not approved");
                 }
             }
 

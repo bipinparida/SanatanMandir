@@ -181,6 +181,8 @@ namespace SanatanMandir.Controllers
             var a = _panditRegistrationService.DeletePanditRegistration(PanditRegistrationId, DeletedBy);
             return Redirect("/SanatanMandir/PanditRegistration/PanditRegistrationView");
         }
+
+
         public JsonResult GetStateByCountryId(int CountryId)
         {
             return Json(_stateService.GetStateByCountryId(CountryId));
@@ -188,6 +190,23 @@ namespace SanatanMandir.Controllers
         public JsonResult GetCityByStateId(int StateId)
         {
             return Json(_cityService.GetCityByStateId(StateId));
+        }
+
+
+
+        [HttpGet]
+        public IActionResult ApprovePanditRegistration(int PanditRegistrationId)
+        {
+            var a = _panditRegistrationService.ApprovePanditRegistration(PanditRegistrationId);
+
+            return Redirect("/SanatanMandir/PanditRegistration/PanditRegistrationView");
+        }
+        [HttpGet]
+        public IActionResult RejectPanditRegistration(int PanditRegistrationId)
+        {
+            var a = _panditRegistrationService.RejectPanditRegistration(PanditRegistrationId);
+
+            return Redirect("/SanatanMandir/PanditRegistration/PanditRegistrationView");
         }
     }
 }

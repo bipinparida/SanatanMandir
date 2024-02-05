@@ -31,19 +31,45 @@ namespace Web.API.Controllers.Pandits
             try
             {
 
+                //if (panditRegistrationDTO.ImageUp != null)
+                //{
+                //    FileInfo fileInfo = new FileInfo(panditRegistrationDTO.ImageUp.FileName);
+                //    string extn = fileInfo.Extension.ToLower();
+                //    Guid id = Guid.NewGuid();
+                //    string filename = id.ToString() + Path.GetExtension(panditRegistrationDTO.ImageUp.FileName);
+
+                //    string newpath = DateTime.Today.Date.ToString("dd-MMM-yyyy");
+                //    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, @"uploads\PanditRegistrationImage\" + panditRegistrationDTO.CreatedBy.ToString());
+                //    if (!Directory.Exists(uploadsFolder))
+                //    {
+                //        Directory.CreateDirectory(uploadsFolder);
+                //    }
+                //    string uniqueFileName = Guid.NewGuid().ToString() + "_" + filename;
+                //    string imagePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                //    using (var stream = new FileStream(imagePath, FileMode.Create))
+                //    {
+                //        panditRegistrationDTO.ImageUp.CopyTo(stream);
+                //    }
+
+                //    panditRegistrationDTO.ImageUp.CopyTo(new FileStream(imagePath, FileMode.Create));
+                //    panditRegistrationDTO.Image = filename;
+
+                //}
+
+
                 if (panditRegistrationDTO.ImageUp != null)
                 {
-                    FileInfo fileInfo = new FileInfo(panditRegistrationDTO.ImageUp.FileName);
-                    string extn = fileInfo.Extension.ToLower();
                     Guid id = Guid.NewGuid();
                     string filename = id.ToString() + Path.GetExtension(panditRegistrationDTO.ImageUp.FileName);
 
-                    string newpath = DateTime.Today.Date.ToString("dd-MMM-yyyy");
-                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, @"uploads\PanditRegistrationImage\" + panditRegistrationDTO.CreatedBy.ToString());
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, @"uploads\PanditRegistrationImage");
+
                     if (!Directory.Exists(uploadsFolder))
                     {
                         Directory.CreateDirectory(uploadsFolder);
                     }
+
                     string uniqueFileName = Guid.NewGuid().ToString() + "_" + filename;
                     string imagePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -52,10 +78,9 @@ namespace Web.API.Controllers.Pandits
                         panditRegistrationDTO.ImageUp.CopyTo(stream);
                     }
 
-                    panditRegistrationDTO.ImageUp.CopyTo(new FileStream(imagePath, FileMode.Create));
                     panditRegistrationDTO.Image = filename;
-
                 }
+
 
 
                 var a = _panditRegistrationService.PanditRegistrationCreate(panditRegistrationDTO);

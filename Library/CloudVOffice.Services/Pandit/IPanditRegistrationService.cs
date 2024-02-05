@@ -14,8 +14,11 @@ namespace CloudVOffice.Services.Pandit
     {
         public MessageEnum PanditRegistrationCreate(PanditRegistrationDTO panditRegistrationDTO);
         public MessageEnum PanditRegistrationUpdate(PanditRegistrationDTO panditRegistrationDTO);
-        public MessageEnum DeletePanditRegistration(int PanditRegistrationId, Int64 DeletedBy);
         public List<PanditRegistration> GetPanditRegistrationList();
         public PanditRegistration GetPanditRegistrationById(int PanditRegistrationId);
+        public MessageEnum DeletePanditRegistration(int PanditRegistrationId, Int64 DeletedBy);
+
+        public MessageEnum ApprovePanditRegistration(int PanditRegistrationId);
+        public MessageEnum RejectPanditRegistration(int PanditRegistrationId);
     }
 }
