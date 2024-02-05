@@ -105,7 +105,7 @@
                                 @{
                                     if (Model.Image != null)
                                     {
-                                        <img src="/uploads/setup/@Model.Image" style="height:100px; width:100px" />
+                                        <img src="/uploads/TempleImage/@Model.Image" style="height:100px; width:100px" />
                                         <input type="hidden" asp-for="@Model.Image">
                                     }
                                 }
@@ -186,12 +186,5 @@
         var query = new ej.data.Query();
         query = (e.text !== '') ? query.where('CountryName', 'startswith', e.text, true) : query;
         e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.Country)), query);
-    }
-</script>
-<script>
-    function onPoojaCategoryNamefiltering(e) {
-        var query = new ej.data.Query();
-        query = (e.text !== '') ? query.where('PoojaCategoryName', 'startswith', e.text, true) : query;
-        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.PoojaCategorys)), query);
     }
 </script>

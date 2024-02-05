@@ -41,23 +41,27 @@
 
                         <div class="row">
                             <div class="col-md-10">
-                                <b>PanditRegistration Create</b>
+                                <b>Pandit Create</b>
                             </div>
                             <div class="col-md-2 ">
-                                <a href="/SanatanMandir/PanditRegistration/PanditRegistrationView" class="btn btn-primary btn-sm float-right"><i class="icon-list2"></i> List</a>
+                                <a href="/SanatanMandir/PanditRegistration/PanditRegistrationView" class="btn btn-primary btn-sm float-right"><i class="icon-list2"></i> &nbsp; Pandit List</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
+
+
                         <div class="form-row">
+
                             <div class="form-group col-md-3">
                                 <input asp-for="@Model.PanditRegistrationId" type="hidden" />
                                 <label for="CountryId" class="form-label">Country Name</label>
-                                <ejs-dropdownlist id="CountryId" allowFiltering="true" ejs-for="@Model.CountryId" filtering="onCountryNamefiltering" change="onChangeState" dataSource="@(new SelectList((IEnumerable)ViewBag.Country, "CountryId",  "CountryName").Items)" placeholder="Select Country" popupHeight="220px">
+                                <ejs-dropdownlist id="CountryId" allowFiltering="true" ejs-for="@Model.CountryId" filtering="onCountryNamefiltering" change="onChangeState" dataSource="@(new SelectList((IEnumerable)ViewBag.CountryList, "CountryId",  "CountryName").Items)" placeholder="Select Country" popupHeight="220px">
                                     <e-dropdownlist-fields text="CountryName" value="CountryId"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="CountryId"></span>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="StateId" class="form-label">State Name</label>
                                 <ejs-dropdownlist id="StateId" allowFiltering="true" ejs-for="@Model.StateId" change="onChangeCity" placeholder="Select State" popupHeight="220px">
@@ -65,6 +69,7 @@
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="StateId"></span>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="CityId" class="form-label">City Name</label>
                                 <ejs-dropdownlist id="CityId" allowFiltering="true" ejs-for="@Model.CityId" placeholder="Select City" popupHeight="220px">
@@ -72,96 +77,125 @@
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="CityId"></span>
                             </div>
+
                             <div class="form-group col-md-3">
-                                <label for="Experiences" class="form-label">Experiences </label>
-                                <input asp-for="@Model.Experiences" type="text" class="form-control" autofocus="autofocus" placeholder="Experiences " />
-                                <span asp-validation-for="Experiences"></span>
+                                <label for="PanditName" class="form-label">Pandit Name &nbsp;<span style="color:red;"><b>*</b></span></label>
+                                <input asp-for="@Model.PanditName" type="text" class="form-control" autofocus="autofocus" placeholder="Pandit Name" required />
+                                <span asp-validation-for="PanditName"></span>
                             </div>
+                           
                         </div>
+
+
+
                         <div class="form-row">
+
                             <div class="form-group col-md-3">
-                                <label for="ExpertiseOnPuja" class="form-label">ExpertiseOnPuja </label>
-                                <input asp-for="@Model.ExpertiseOnPuja" type="text" class="form-control" autofocus="autofocus" placeholder="ExpertiseOnPuja " />
-                                <span asp-validation-for="ExpertiseOnPuja"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="Religion" class="form-label">Religion Name </label>
-                                <input asp-for="@Model.Religion" type="text" class="form-control" autofocus="autofocus" placeholder="Religion " />
-                                <span asp-validation-for="Religion"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="MotherTongue" class="form-label">MotherTongue Name </label>
-                                <input asp-for="@Model.MotherTongue" type="text" class="form-control" autofocus="autofocus" placeholder="MotherTongue " />
-                                <span asp-validation-for="MotherTongue"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="Caste" class="form-label">Caste Name </label>
-                                <input asp-for="@Model.Caste" type="text" class="form-control" autofocus="autofocus" placeholder="Caste " />
-                                <span asp-validation-for="Caste"></span>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="Gothram" class="form-label">Gothram Name </label>
-                                <input asp-for="@Model.Gothram" type="text" class="form-control" autofocus="autofocus" placeholder="Gothram " />
-                                <span asp-validation-for="Gothram"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="AadharCard" class="form-label">AadharCard Number </label>
-                                <input asp-for="@Model.AadharCard" type="text" class="form-control" autofocus="autofocus" placeholder="AadharCard No " />
-                                <span asp-validation-for="AadharCard"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="Qualification" class="form-label">Qualification</label>
-                                <input asp-for="@Model.Qualification" type="text" class="form-control" autofocus="autofocus" placeholder="Qualification" />
-                                <span asp-validation-for="Qualification"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="TempleId" class="form-label">Temple Name</label>
+                                <label for="TempleId" class="form-label">Temple Name &nbsp;<span style="color:red;"><b>*</b></span></label>
                                 <ejs-dropdownlist id="TempleId" allowFiltering="true" ejs-for="@Model.TempleId" filtering="onTempleNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.Temples, "TempleId", "TempleName").Items)" placeholder="Select TempleName" popupHeight="220px">
                                     <e-dropdownlist-fields text="TempleName" value="TempleId"></e-dropdownlist-fields>
                                 </ejs-dropdownlist>
                                 <span asp-validation-for="TempleId"></span>
                             </div>
-                        </div>
-                        <div class="form-row">
+
                             <div class="form-group col-md-3">
-                                <label for="PanditName" class="form-label">Pandit Name</label>
-                                <input asp-for="@Model.PanditName" type="text" class="form-control" autofocus="autofocus" placeholder="Pandit Name" />
-                                <span asp-validation-for="PanditName"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="Address" class="form-label">Address </label>
-                                <input asp-for="@Model.Address" type="text" class="form-control" autofocus="autofocus" placeholder="Address " />
-                                <span asp-validation-for="Address"></span>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="PrimaryPhone" class="form-label">PrimaryPhone No </label>
-                                <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No " />
+                                <label for="PrimaryPhone" class="form-label">PrimaryPhone No &nbsp;<span style="color:red;"><b>*</b></span> </label>
+                                <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No" required />
                                 <span asp-validation-for="PrimaryPhone"></span>
+                                <div asp-validation-summary="ModelOnly" class="message-error"></div>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="AlternatePhone" class="form-label">AlternatePhone No </label>
-                                <input asp-for="@Model.AlternatePhone" type="text" class="form-control" autofocus="autofocus" placeholder="AlternatePhone No " />
+                                <input asp-for="@Model.AlternatePhone" type="text" class="form-control" autofocus="autofocus" placeholder="AlternatePhone No"/>
                                 <span asp-validation-for="AlternatePhone"></span>
                             </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="Address" class="form-label">Address</label>
+                                <input asp-for="@Model.Address" type="text" class="form-control" autofocus="autofocus" placeholder="Address" />
+                                <span asp-validation-for="Address"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-3">
+                                <label for="Qualification" class="form-label">Qualification</label>
+                                <input asp-for="@Model.Qualification" type="text" class="form-control" autofocus="autofocus" placeholder="Qualification" />
+                                <span asp-validation-for="Qualification"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="Religion" class="form-label">Religion Name</label>
+                                <input asp-for="@Model.Religion" type="text" class="form-control" autofocus="autofocus" placeholder="Religion " />
+                                <span asp-validation-for="Religion"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="MotherTongue" class="form-label">MotherTongue</label>
+                                <input asp-for="@Model.MotherTongue" type="text" class="form-control" autofocus="autofocus" placeholder="MotherTongue " />
+                                <span asp-validation-for="MotherTongue"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="Caste" class="form-label">Caste Name</label>
+                                <input asp-for="@Model.Caste" type="text" class="form-control" autofocus="autofocus" placeholder="Caste " />
+                                <span asp-validation-for="Caste"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-3">
+                                <label for="Experiences" class="form-label">Experiences</label>
+                                <input asp-for="@Model.Experiences" type="text" class="form-control" autofocus="autofocus" placeholder="Experiences"/>
+                                <span asp-validation-for="Experiences"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="Gothram" class="form-label">Gothram Name</label>
+                                <input asp-for="@Model.Gothram" type="text" class="form-control" autofocus="autofocus" placeholder="Gothram " />
+                                <span asp-validation-for="Gothram"></span>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="AadharCard" class="form-label">AadharCard Number</label>
+                                <input asp-for="@Model.AadharCard" type="text" class="form-control" autofocus="autofocus" placeholder="AadharCard No " />
+                                <span asp-validation-for="AadharCard"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="ExpertiseOnPuja" class="form-label">ExpertiseOn Puja </label>
+                                <input asp-for="@Model.ExpertiseOnPuja" type="text" class="form-control" autofocus="autofocus" placeholder="ExpertiseOnPuja" />
+                                <span asp-validation-for="ExpertiseOnPuja"></span>
+                            </div>
+
                         </div>
                         <div class="form-row">
+
                             <div class="form-group col-md-3">
-                                <label for="MailId" class="form-label">MailId </label>
-                                <input asp-for="@Model.MailId" type="text" class="form-control" autofocus="autofocus" placeholder="MailId " />
+                                <label for="MailId" class="form-label">MailId</label>
+                                <input asp-for="@Model.MailId" type="text" class="form-control" autofocus="autofocus" placeholder="MailId" required/>
+
                                 <span asp-validation-for="MailId"></span>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="DateOfBirth" class="form-label">DateOfBirth </label>
                                 <input asp-for="@Model.DateOfBirth" type="date" class="form-control" autofocus="autofocus" placeholder="DateOfBirth " />
                                 <span asp-validation-for="DateOfBirth"></span>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="Password" class="form-label">Password </label>
-                                <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " />
+                                <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " required />
                                 <span asp-validation-for="Password"></span>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="Image" class="form-label">Image</label>
                                 <input asp-for="@Model.ImageUp" type="file" class="form-control" autofocus="autofocus" placeholder="Image" />
@@ -169,12 +203,13 @@
                                 @{
                                     if (Model.Image != null)
                                     {
-                                        <img src="/uploads/setup/@Model.Image" style="height:100px; width:100px" />
+                                        <img src="/uploads/PanditRegistrationImage/@Model.Image" style="height:100px; width:100px" />
                                         <input type="hidden" asp-for="@Model.Image">
                                     }
                                 }
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="IsApprove" class="form-label">Is Approve </label>
@@ -183,7 +218,7 @@
                                 <span asp-validation-for="IsApprove"></span>
                             </div>
                         </div>
-                        <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                       
                     </div>
                     <div class="card-body">
                         <div class="col-lg-2 col-md-2 col-sm-12">
@@ -256,7 +291,7 @@
     function onCountryNamefiltering(e) {
         var query = new ej.data.Query();
         query = (e.text !== '') ? query.where('CountryName', 'startswith', e.text, true) : query;
-        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.Country)), query);
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.CountryList)), query);
     }
 </script>
 

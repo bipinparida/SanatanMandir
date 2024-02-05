@@ -52,7 +52,7 @@ namespace SanatanMandir.Controllers
 
            //ViewBag.States = _stateService.GetStateList();
            //ViewBag.City = _cityService.GetCityList();
-           // ViewBag.PoojaCategorys = _poojaCategoryService.GetPoojaCategoryList();
+           //ViewBag.PoojaCategorys = _poojaCategoryService.GetPoojaCategoryList();
 
             TempleDTO templeDTO = new TempleDTO();
 
@@ -64,6 +64,7 @@ namespace SanatanMandir.Controllers
                 templeDTO.GodName = d.GodName;
                 templeDTO.CountryId = d.CountryId;
                 templeDTO.StateId = d.StateId;
+                templeDTO.CityId = d.CityId;
                 templeDTO.Latitude = d.Latitude;
                 templeDTO.Longitude = d.Longitude;
                 templeDTO.Image = d.Image;

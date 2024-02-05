@@ -27,8 +27,8 @@ namespace CloudVOffice.Services.Customer
 
             try
             {
-                var objcheck = _dbContext.CustomerRegistrations.SingleOrDefault(opt => opt.Deleted == false && opt.CustomerName == customerRegistrationDTO.CustomerName);
-                if (objcheck == null)
+                var customer = _dbContext.CustomerRegistrations.Where(x => x.PrimaryPhone == customerRegistrationDTO.PrimaryPhone && x.Deleted == false).FirstOrDefault();
+                if (customer == null)
                 {
                     CustomerRegistration customerRegistration = new CustomerRegistration();
                     customerRegistration.CustomerName = customerRegistrationDTO.CustomerName;
@@ -61,8 +61,8 @@ namespace CloudVOffice.Services.Customer
         {
             try
             {
-                var updateCustomerRegistration = _dbContext.CustomerRegistrations.Where(x => x.CustomerRegistrationId != customerRegistrationDTO.CustomerRegistrationId && x.CustomerName == customerRegistrationDTO.CustomerName && x.Deleted == false).FirstOrDefault();
-                if (updateCustomerRegistration == null)
+                var updateCustomer = _dbContext.CustomerRegistrations.Where(x => x.CustomerRegistrationId != customerRegistrationDTO.CustomerRegistrationId && x.PrimaryPhone == customerRegistrationDTO.PrimaryPhone && x.Deleted == false).FirstOrDefault();
+                if (updateCustomer == null)
                 {
                     var a = _dbContext.CustomerRegistrations.Where(x => x.CustomerRegistrationId == customerRegistrationDTO.CustomerRegistrationId).FirstOrDefault();
                     if (a != null)

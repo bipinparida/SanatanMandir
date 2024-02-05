@@ -93,7 +93,7 @@ namespace SanatanMandir.Controllers
                     {
 
                         TempData["msg"] = MessageEnum.Duplicate;
-                        ModelState.AddModelError("", "CustomerRegistration Already Exists");
+                        ModelState.AddModelError("", "Customer Mobile Number Already Exists");
 
                     }
                     else

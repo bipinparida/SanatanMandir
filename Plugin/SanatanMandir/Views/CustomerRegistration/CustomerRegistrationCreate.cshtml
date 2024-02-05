@@ -42,7 +42,7 @@
                                 <b>CustomerRegistration Create</b>
                             </div>
                             <div class="col-md-2 ">
-                                <a href="/SanatanMandir/CustomerRegistration/CustomerRegistrationView" class="btn btn-primary btn-sm float-right"><i class="icon-list2"></i> List</a>
+                                <a href="/SanatanMandir/CustomerRegistration/CustomerRegistrationView" class="btn btn-primary btn-sm float-right"><i class="icon-list2"></i>&nbsp; Customer List</a>
                             </div>
                         </div>
                     </div>
@@ -50,20 +50,23 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <input asp-for="@Model.CustomerRegistrationId" type="hidden" />
-                                <label for="CustomerName" class="form-label">Customer Name</label>
-                                <input asp-for="@Model.CustomerName" type="text" class="form-control" autofocus="autofocus" placeholder="Customer Name" />
+                                <label for="CustomerName" class="form-label">Customer Name &nbsp;<span style="color:red;"><b>*</b></span></label>
+                                <input asp-for="@Model.CustomerName" type="text" class="form-control" autofocus="autofocus" placeholder="Customer Name" required />
                                 <span asp-validation-for="CustomerName"></span>
                             </div>
+                            <div class="form-group col-md-3">
+                                <label for="PrimaryPhone" class="form-label">PrimaryPhone No &nbsp;<span style="color:red;"><b>*</b></span> </label>
+                                <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No " required />
+                                <span asp-validation-for="PrimaryPhone"></span>
+                                <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                            </div>
+
                             <div class="form-group col-md-3">
                                 <label for="Address" class="form-label">Address </label>
                                 <input asp-for="@Model.Address" type="text" class="form-control" autofocus="autofocus" placeholder="Address " />
                                 <span asp-validation-for="Address"></span>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label for="PrimaryPhone" class="form-label">PrimaryPhone No </label>
-                                <input asp-for="@Model.PrimaryPhone" type="text" class="form-control" autofocus="autofocus" placeholder="PrimaryPhone No " />
-                                <span asp-validation-for="PrimaryPhone"></span>
-                            </div>
+                          
                             <div class="form-group col-md-3">
                                 <label for="AlternatePhone" class="form-label">AlternatePhone No </label>
                                 <input asp-for="@Model.AlternatePhone" type="text" class="form-control" autofocus="autofocus" placeholder="AlternatePhone No " />
@@ -83,8 +86,8 @@
                                 <span asp-validation-for="DateOfBirth"></span>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="Password" class="form-label">Password </label>
-                                <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " />
+                                <label for="Password" class="form-label">Password &nbsp;<span style="color:red;" </label>
+                                <input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password " required />
                                 <span asp-validation-for="Password"></span>
                             </div>
                             <div class="form-group col-md-3">
@@ -94,13 +97,12 @@
                                 @{
                                     if (Model.Image != null)
                                     {
-                                        <img src="/uploads/setup/@Model.Image" style="height:100px; width:100px" />
+                                        <img src="/uploads/CustomerRegistrationImage/@Model.Image" style="height:100px; width:100px" />
                                         <input type="hidden" asp-for="@Model.Image">
                                     }
                                 }
                             </div>
                         </div>
-                        <div asp-validation-summary="ModelOnly" class="message-error"></div>
                     </div>
                     <div class="card-body">
                         <div class="col-lg-2 col-md-2 col-sm-12">
