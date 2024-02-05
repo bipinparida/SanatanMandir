@@ -1,0 +1,99 @@
+﻿@*@using System.Collections;
+@using Newtonsoft.Json;
+@model CloudVOffice.Data.DTO.Pandit.FeedbackDTO;
+
+@{
+    Layout = "_MainAppLayout";
+    ViewData["Title"] = "Feedback";
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <div class="page-icon">
+                    <i class="icon-laptop_windows"></i>
+                </div>
+                <div class="page-title">
+                    <h5>SanatanMandir Dashboard</h5>
+                    <h6 class="sub-heading">Welcome to SanatanMandir Admin</h6>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right-actions">
+                    <span class="last-login"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="main-content">
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <form asp-route="SanatanMandir/Feedback/FeedbackCreate" method="post" autocomplete="off">
+
+                    <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <b>Feedback Create</b>
+                            </div>
+                            <div class="col-md-2 ">
+                                <a href="/SanatanMandir/Feedback/FeedbackView" class="btn btn-primary btn-sm float-right"><i class="icon-list2"></i> List</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <input asp-for="@Model.FeedbackId" type="hidden" />
+                                <label for="FeedbackName" class="form-label">Feedback Name</label>
+                                <input asp-for="@Model.FeedbackName" type="text" class="form-control" autofocus="autofocus" placeholder="Feedback Name" />
+                                <span asp-validation-for="FeedbackName"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="PanditRegistrationId" class="form-label">Pandit Name</label>
+                                <ejs-dropdownlist id="PanditRegistrationId" allowFiltering="true" ejs-for="@Model.PanditRegistrationId" filtering="onPanditNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.PanditRegistrations, "PanditRegistrationId", "PanditName").Items)" placeholder="Select Pandit" popupHeight="220px">
+                                    <e-dropdownlist-fields text="PanditName" value="PanditRegistrationId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="PanditRegistrationId"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="CustomerRegistrationId" class="form-label">Customer Name</label>
+                                <ejs-dropdownlist id="CustomerRegistrationId" allowFiltering="true" ejs-for="@Model.CustomerRegistrationId" filtering="onCustomerNamefiltering" dataSource="@(new SelectList((IEnumerable) ViewBag.CustomerRegistrations, "CustomerRegistrationId", "CustomerName").Items)" placeholder="Select Customer" popupHeight="220px">
+                                    <e-dropdownlist-fields text="CustomerName" value="CustomerRegistrationId"></e-dropdownlist-fields>
+                                </ejs-dropdownlist>
+                                <span asp-validation-for="CustomerRegistrationId"></span>
+                            </div>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function onPanditNamefiltering(e) {
+        var query = new ej.data.Query();
+        query = (e.text !== '') ? query.where('PanditName', 'startswith', e.text, true) : query;
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.PanditRegistrations)), query);
+    }
+</script>
+<script>
+    function onCustomerNamefiltering(e) {
+        var query = new ej.data.Query();
+        query = (e.text !== '') ? query.where('ViewBag.CustomerRegistrations', 'startswith', e.text, true) : query;
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.Country)), query);
+    }
+</script>*@

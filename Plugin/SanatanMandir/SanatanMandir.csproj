@@ -21,6 +21,8 @@
 		<None Remove="Views\Answer\AnswerView.cshtml" />
 		<None Remove="Views\CustomerRegistration\CustomerRegistrationCreate.cshtml" />
 		<None Remove="Views\CustomerRegistration\CustomerRegistrationView.cshtml" />
+		<None Remove="Views\Feedback\FeedbackCreate.cshtml" />
+		<None Remove="Views\Feedback\FeedbackView.cshtml" />
 		<None Remove="Views\LocationMaster\CityCreate.cshtml" />
 		<None Remove="Views\LocationMaster\CityView.cshtml" />
 		<None Remove="Views\LocationMaster\CountryCreate.cshtml" />
