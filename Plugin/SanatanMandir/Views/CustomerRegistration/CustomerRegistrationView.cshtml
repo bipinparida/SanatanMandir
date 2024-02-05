@@ -18,7 +18,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="right-actions">
-                    <span class="last-login">Last Login: 2 hours ago</span>
+                  @*   <span class="last-login">Last Login: 2 hours ago</span> *@
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                             CustomerRegistration View
                         </div>
                         <div class="col-md-2 ">
-                            <a href="/SanatanMandir/CustomerRegistration/CustomerRegistrationCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add CustomerRegistration</a>
+                            <a href="/SanatanMandir/CustomerRegistration/CustomerRegistrationCreate" class="btn btn-primary btn-sm float-right"><i class="icon icon-add"></i>Add Customer</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                             <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="AlternatePhone" headerText="AlternatePhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="MailId" headerText="MailId" textAlign="Left" width="120"></e-grid-column>
-                            <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120" format="dd-MM-yyyy"></e-grid-column>
                             <e-grid-column field="Password" headerText="Password" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
                                            textAlign="Left" width="120"></e-grid-column>
@@ -95,7 +95,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "CustomerRegistration",
+                    title: "Customer",
                     text: "Successfully updated.",
                     type: "success"
                 });
@@ -104,7 +104,7 @@
                 sweetAlert({
                     html: true,
                     icon: "success",
-                    title: "CustomerRegistration",
+                    title: "Customer",
                     text: "Successfully Deleted.",
                     type: "success"
                 });
@@ -113,7 +113,7 @@
                 sweetAlert({
                     html: true,
                     icon: "danger",
-                    title: "CustomerRegistration",
+                    title: "Customer",
                     text: "There is somthing going wrong.",
                     type: "danger"
                 });
@@ -122,7 +122,7 @@
                 sweetAlert({
                     html: true,
                     icon: "error",
-                    title: "CustomerRegistration",
+                    title: "Customer",
                     text: "There is somthing going wrong.",
                     type: "error"
                 });
@@ -131,7 +131,7 @@
                 sweetAlert({
                     html: true,
                     icon: "error",
-                    title: "CustomerRegistration",
+                    title: "Customer",
                     text: message,
                     type: "error"
                 });
