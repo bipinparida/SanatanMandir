@@ -30,6 +30,7 @@
 		<None Remove="Views\LocationMaster\StateCreate.cshtml" />
 		<None Remove="Views\LocationMaster\StateView.cshtml" />
 		<None Remove="Views\PanditRegistration\PanditRegistrationCreate.cshtml" />
+		<None Remove="Views\PanditRegistration\PanditRegistrationMessageCreate.cshtml" />
 		<None Remove="Views\PanditRegistration\PanditRegistrationView.cshtml" />
 		<None Remove="Views\PoojaCategory\PoojaCategoryCreate.cshtml" />
 		<None Remove="Views\PoojaCategory\PoojaCategoryView.cshtml" />

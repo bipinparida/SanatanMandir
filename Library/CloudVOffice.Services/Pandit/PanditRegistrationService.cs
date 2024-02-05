@@ -202,5 +202,28 @@ namespace CloudVOffice.Services.Pandit
                 throw;
             }
         }
+
+        public MessageEnum PanditRegistrationMessageUpdate(PanditRegistrationDTO panditRegistrationDTO)
+        {
+            try
+            {
+              
+                    var a = _dbContext.PanditRegistrations.Where(x => x.PanditRegistrationId == panditRegistrationDTO.PanditRegistrationId).FirstOrDefault();
+                    if (a != null)
+                    {
+                        a.Message = panditRegistrationDTO.Message;
+                       
+                        _dbContext.SaveChanges();
+                        return MessageEnum.Updated;
+                    }
+                    else
+                        return MessageEnum.Invalid;
+              
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

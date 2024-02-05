@@ -20,5 +20,7 @@ namespace CloudVOffice.Services.Pandit
 
         public MessageEnum ApprovePanditRegistration(int PanditRegistrationId);
         public MessageEnum RejectPanditRegistration(int PanditRegistrationId);
+        public MessageEnum PanditRegistrationMessageUpdate(PanditRegistrationDTO panditRegistrationDTO);
+
     }
 }

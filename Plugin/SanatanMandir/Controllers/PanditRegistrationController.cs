@@ -208,5 +208,57 @@ namespace SanatanMandir.Controllers
 
             return Redirect("/SanatanMandir/PanditRegistration/PanditRegistrationView");
         }
+
+
+        [HttpGet]
+        public IActionResult PanditRegistrationMessageCreate(int? PanditRegistrationId)
+        {
+
+            PanditRegistrationDTO panditRegistrationDTO = new PanditRegistrationDTO();
+
+            if (PanditRegistrationId != null)
+            {
+
+                PanditRegistration d = _panditRegistrationService.GetPanditRegistrationById(int.Parse(PanditRegistrationId.ToString()));
+
+                panditRegistrationDTO.Message = d.Message;
+
+            }
+
+            return View("~/Plugins/SanatanMandir/Views/PanditRegistration/PanditRegistrationMessageCreate.cshtml", panditRegistrationDTO);
+
+        }
+
+        [HttpPost]
+        public IActionResult PanditRegistrationMessageCreate(PanditRegistrationDTO panditRegistrationDTO)
+        {
+            panditRegistrationDTO.CreatedBy = Int64.Parse(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value.ToString());
+
+            if (ModelState.IsValid)
+            {
+                
+
+                if (panditRegistrationDTO.PanditRegistrationId != null)
+                {
+                    var a = _panditRegistrationService.PanditRegistrationMessageUpdate(panditRegistrationDTO);
+                    if (a == MessageEnum.Updated)
+                    {
+                        TempData["msg"] = MessageEnum.Updated;
+                        return Redirect("/SanatanMandir/PanditRegistration/PanditRegistrationView");
+
+                    }
+                    else
+                    {
+                        TempData["msg"] = MessageEnum.UnExpectedError;
+                        ModelState.AddModelError("", "Un-Expected Error");
+                    }
+                }
+              
+            }
+
+            return View("~/Plugins/SanatanMandir/Views/PanditRegistration/PanditRegistrationMessageCreate.cshtml", panditRegistrationDTO);
+
+        }
+
     }
 }

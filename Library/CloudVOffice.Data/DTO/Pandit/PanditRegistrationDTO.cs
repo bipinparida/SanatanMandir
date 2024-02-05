@@ -30,6 +30,7 @@ namespace CloudVOffice.Data.DTO.Pandit
         public DateTime? DateOfBirth { get; set; }
         public string? Password { get; set; }
         public string? Image { get; set; }
+        public string? Message { get; set; }
         public bool IsApprove { get; set; }
         public Int64 CreatedBy { get; set; }
         public IFormFile? ImageUp { get; set; }

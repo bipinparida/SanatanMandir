@@ -57,7 +57,7 @@
                         <e-grid-selectionsettings persistSelection="true" type="Multiple" checkboxOnly="true"></e-grid-selectionsettings>
                         <e-grid-columns>
 
-                            <e-grid-column headerText="Action" template="#Actions" width="180"></e-grid-column>
+                            <e-grid-column headerText="Action" template="#Actions" width="210"></e-grid-column>
                             <e-grid-column field="IsApprove" headerText="IsApprove Name" template="#statusTemplate" textAlign="Left" width="150"></e-grid-column>
                             <e-grid-column field="PanditName" headerText="Pandit Name" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
@@ -80,8 +80,10 @@
                             <e-grid-column field="MailId" headerText="MailId" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="DateOfBirth" headerText="DateOfBirth" textAlign="Left" width="120" format="dd-MM-yyyy"></e-grid-column>
                             <e-grid-column field="Password" headerText="Password" textAlign="Left" width="120"></e-grid-column>
+                            
                             <e-grid-column field="Image" template="#ImageTemplate" headerText="Image"
                                            textAlign="Left" width="120"></e-grid-column>
+                            <e-grid-column field="Message" headerText="Message" textAlign="Left" width="500"></e-grid-column>
 
                         </e-grid-columns>
                     </ejs-grid>
@@ -224,9 +226,11 @@
 
         <button onClick="Approve(${PanditRegistrationId})" style="background: transparent;border: none; color:green" title="Approve"><i class="icon-checkmark" style="font-size:22px"></i> </button>
 
-         <button onClick="Reject(${PanditRegistrationId})" style="background: transparent;border: none; color:red" title="Reject" ><i class="icon-cross" style="font-size:22px"></i> </button>
+         <button onClick="Reject(${PanditRegistrationId})" style="background: transparent;border: none; color:red" title="Reject" ><i class="icon-cross" style="font-size:22px"></i> </button> &nbsp;&nbsp;
 
-        <button onClick="Delete(${PanditRegistrationId})" style="background: transparent;border: none;"><i class="icon-bin" style="font-size:22px"></i></button>
+          <a href="/SanatanMandir/PanditRegistration/PanditRegistrationMessageCreate?PanditRegistrationId=${PanditRegistrationId}"><i class="icon-envelop" style="font-size:22px; color:darkorange" title="Message"></i></a> &nbsp;&nbsp;
+
+        <button onClick="Delete(${PanditRegistrationId})" style="background: transparent;border: none;"><i class="icon-bin" style="font-size:22px"></i></button> &nbsp;&nbsp;
 
          <a href="/SanatanMandir/PanditRegistration/PanditRegistrationCreate?PanditRegistrationId=${PanditRegistrationId}"><i class="icon-pencil3" style="font-size:22px"></i></a> &nbsp;&nbsp;&nbsp;
     </div>
