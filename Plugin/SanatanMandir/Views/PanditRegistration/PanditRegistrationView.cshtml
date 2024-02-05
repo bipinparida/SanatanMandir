@@ -59,6 +59,7 @@
 
                             <e-grid-column headerText="Action" template="#Actions" width="210"></e-grid-column>
                             <e-grid-column field="IsApprove" headerText="IsApprove Name" template="#statusTemplate" textAlign="Left" width="150"></e-grid-column>
+                            <e-grid-column field="Reject" headerText="Reject" template="#rejectTemplate" textAlign="Left" width="150"></e-grid-column>
                             <e-grid-column field="PanditName" headerText="Pandit Name" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="PrimaryPhone" headerText="PrimaryPhone No" textAlign="Left" width="120"></e-grid-column>
                             <e-grid-column field="CountryId" headerText="Country Name" textAlign="Left" width="120"></e-grid-column>
@@ -240,6 +241,11 @@
     ${statusDetail(data)}
 </script>
 
+
+<script id="rejectTemplate" type="text/x-template">
+    ${rejectDetail(data)}
+</script>
+
 <script>
     function toolbarClick(args) {
         var gridObj = document.getElementById("GridOverview").ej2_instances[0];
@@ -275,9 +281,21 @@
     function statusDetail(e) {
 
         if (e.IsApprove == true) {
-            return '<span class="badge badge-pill badge-success" > Approved </span>';
+            return '<span class="badge badge-pill badge-success" style="color:white; background-color: green;">Approved</span>';
         } else {
-            return '<span class="badge badge-pill badge-dark"> Not Approved </span>';
+            return '<span class="badge badge-pill badge-dark" style="color:white; background-color:blue;" > Not Approve </span>';
+        }
+
+    }
+
+
+    function rejectDetail(e) {
+
+        if (e.Reject == true) {
+            return '<span class="badge badge-pill badge-success" style="color:white; background-color:red;"> Rejected </span>';
+         } 
+        else {
+            return '';
         }
 
     }

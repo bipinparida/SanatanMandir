@@ -51,8 +51,9 @@ namespace CloudVOffice.Services.Pandit
                     panditRegistration.DateOfBirth = panditRegistrationDTO.DateOfBirth;
                     panditRegistration.Password = panditRegistrationDTO.Password;
                     panditRegistration.Image = panditRegistrationDTO.Image;
-                   // panditRegistration.IsApprove = panditRegistrationDTO.IsApprove;
+                   //panditRegistration.IsApprove = panditRegistrationDTO.IsApprove;
                     panditRegistration.IsApprove = false;
+                    panditRegistration.Reject = false;
                     panditRegistration.CreatedBy = panditRegistrationDTO.CreatedBy;
                     panditRegistration.CreatedDate = System.DateTime.Now;
                     var obj = _panditRegistrationRepo.Insert(panditRegistration);
@@ -102,6 +103,7 @@ namespace CloudVOffice.Services.Pandit
                         a.Password = panditRegistrationDTO.Password;
                         a.Image = panditRegistrationDTO.Image;
                         a.IsApprove = panditRegistrationDTO.IsApprove;
+                        a.Reject = panditRegistrationDTO.Reject;
                         a.UpdatedBy = panditRegistrationDTO.CreatedBy;
                         a.UpdatedDate = DateTime.Now;
                         _dbContext.SaveChanges();
@@ -172,6 +174,7 @@ namespace CloudVOffice.Services.Pandit
                 if (a != null)
                 {
                     a.IsApprove = true;
+                    a.Reject = false;
                     _dbContext.SaveChanges();
                     return MessageEnum.Approved;
                 }
@@ -191,6 +194,7 @@ namespace CloudVOffice.Services.Pandit
                 if (a != null)
                 {
                     a.IsApprove = false;
+                    a.Reject = true;
                     _dbContext.SaveChanges();
                     return MessageEnum.Rejected;
                 }
